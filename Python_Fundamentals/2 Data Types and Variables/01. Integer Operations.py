@@ -1,10 +1,6 @@
-a = int(input())
-b = int(input())
-c = int(input())
-d = int(input())
-sum = 0
+a = input()
+b = input()
+c = input()
 
-result = (a + b) / c
-sum = int(result) * d
-
-print(sum)
+result = str(a + b + c)
+print(result)
