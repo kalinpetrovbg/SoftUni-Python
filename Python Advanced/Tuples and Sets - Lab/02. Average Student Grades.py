@@ -12,6 +12,6 @@ for _ in range(number):
         grades[name].append(grade)
 
 for (name, grade) in grades.items():
-    grades_string = " ".join(map(str,grade))
+    grades_string = " ".join(map(lambda grade: f'{grade:.2f}',grade))
     average = sum(grade) / len(grade)
-    print(f"{name} -> {grades_string:.2f} (avg: {average:.2f})")
+    print(f"{name} -> {grades_string} (avg: {average:.2f})")
