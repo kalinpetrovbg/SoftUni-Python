@@ -1,8 +1,9 @@
 num = int(input())
-uniques = []
+uniques = set()
+
 for _ in range(num):
     name = input()
-    uniques.append(name)
+    uniques.add(name)
 
-for each in set(uniques):
+for each in uniques:
     print(each)
