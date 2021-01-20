@@ -1,10 +1,7 @@
 from collections import deque
-food_capacity = int(input())
-q = deque()
-people = input().split()
 
-for each in people:
-    q.append(int(each))
+food_capacity = int(input())
+q = deque([int(x) for x in input().split()])
 
 print(max(q))
 
