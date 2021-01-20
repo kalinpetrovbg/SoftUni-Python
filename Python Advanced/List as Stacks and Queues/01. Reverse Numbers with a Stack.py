@@ -1,8 +1,5 @@
-numbers = input().split()
-new = []
+new = [x for x in input().split()]
 result = []
-for num in numbers:
-    new.append(num)
 
 while len(new) > 0:
     result.append(new.pop())
