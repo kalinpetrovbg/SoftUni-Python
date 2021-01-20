@@ -1,6 +1,8 @@
 num = int(input())
 set_1 = set()
 set_2 = set()
+biggest = ""
+result = ""
 
 for _ in range(num):
     num1, num2 = input().split("-")
@@ -12,4 +14,11 @@ for _ in range(num):
     for y in range(start2, stop2 + 1):
         set_2.add(y)
 
-print(set_1.intersection(set_2))
+    result = set_1.intersection(set_2)
+    if len(result) > len(biggest):
+        biggest = result
+
+    set_1.clear()
+    set_2.clear()
+
+print(f"Longest intersection is {list(biggest)} with length {len(biggest)}")
