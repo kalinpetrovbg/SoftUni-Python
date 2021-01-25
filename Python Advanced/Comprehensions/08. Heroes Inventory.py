@@ -1,11 +1,11 @@
 names = input().split(", ")
-heroes = {}
+heroes = {name: {} for name in names}
 command = input()
 
 while command != "End":
     name, item, qty = command.split("-")
     qty = int(qty)
-    if name not in heroes:
+    if len(heroes[name]) == 0:
         heroes[name] = []
         if item not in heroes[name]:
             heroes[name].append(item)
@@ -14,7 +14,6 @@ while command != "End":
         if item not in heroes[name]:
             heroes[name].append(item)
             heroes[name].append(qty)
-
     command = input()
 
 for key, value in heroes.items():
