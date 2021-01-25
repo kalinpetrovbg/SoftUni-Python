@@ -1,27 +1,22 @@
 names = input().split(", ")
-
+heroes = {}
 command = input()
-result = {}
-cost = {}
 
 while command != "End":
-    name, item, price = command.split("-")
-    price = int(price)
-    if name not in result:
-        result[name] = []
-        cost[name] = []
-        if item not in result[name]:
-            result[name].append(item)
-            cost[name].append(price)
+    name, item, qty = command.split("-")
+    qty = int(qty)
+    if name not in heroes:
+        heroes[name] = []
+        if item not in heroes[name]:
+            heroes[name].append(item)
+            heroes[name].append(qty)
     else:
-        if item not in result[name]:
-            result[name].append(item)
-            cost[name].append(price)
+        if item not in heroes[name]:
+            heroes[name].append(item)
+            heroes[name].append(qty)
 
     command = input()
 
-for name, items in result.items():
-    for person, total in cost.items():
-        if name == person:
-            print(f"{name} -> Items: {len(result[name])}, Cost: {sum(total)}")
-
+for key, value in heroes.items():
+    total = [x for x in value if str(x).isdigit()]
+    print(f"{key} -> Items: {len(value) // 2}, Cost: {sum(total)} ")
