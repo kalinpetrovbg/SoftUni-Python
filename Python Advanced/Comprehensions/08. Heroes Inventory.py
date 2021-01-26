@@ -5,15 +5,11 @@ command = input()
 while command != "End":
     name, item, qty = command.split("-")
     qty = int(qty)
-    if len(heroes[name]) == 0:
+    if not heroes[name]:
         heroes[name] = []
-        if item not in heroes[name]:
-            heroes[name].append(item)
-            heroes[name].append(qty)
-    else:
-        if item not in heroes[name]:
-            heroes[name].append(item)
-            heroes[name].append(qty)
+    if item not in heroes[name]:
+        heroes[name].append(item)
+        heroes[name].append(qty)
     command = input()
 
 for key, value in heroes.items():
