@@ -19,9 +19,10 @@ for _ in range(n):
     total_quality += quality        # potential error
 
     if not elements[cat]:
-        elements[cat] = {item}
+        elements[cat] = []
+        elements[cat].append(item)
     else:
-        elements[cat].add(item)
+        elements[cat].append(item)
 
 print(f"Count of items: {total_qty}")
 print(f"Average quality: {total_quality / len(categories):.2f}")
