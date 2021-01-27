@@ -1,28 +1,29 @@
 categories = input().split(", ")
+elements = {cat: {} for cat in categories}
 n = int(input())
-items = {}
 total_qty = 0
 total_quality = 0
+nums = 0
 
 for _ in range(n):
     command = input()
     bundle = command.replace(";", " - ")
 
-    cat, item, qty, quality = bundle.split(" - ")
+    cat, item, qty, qua = bundle.split(" - ")
+    nums += 1
     _, quantity = qty.split(":")
     quantity = int(quantity)
+    _, quality = qua.split(":")
+    quality = int(quality)
     total_qty += quantity
-    _, qual = quality.split(":")
-    qual = int(qual)
-    total_quality += qual        # potential error
+    total_quality += quality        # potential error
 
-    if cat not in items:
-        items[cat] = []
-        items[cat].append(item)
+    if not elements[cat]:
+        elements[cat] = {item}
     else:
-        items[cat].append(item)
+        elements[cat].add(item)
 
 print(f"Count of items: {total_qty}")
 print(f"Average quality: {total_quality / len(categories):.2f}")
-for category, types in items.items():
+for category, types in elements.items():
     print(f"{category} -> {', '.join(types)}")
