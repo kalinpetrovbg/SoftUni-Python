@@ -5,9 +5,9 @@ maximum = -999999
 
 for i in range(row - 2):
     for j in range(col - 2):
-        line1 = [matrix[i][j], matrix[i][j + 1], matrix[i][j + 2]]
-        line2 = [matrix[i + 1][j], matrix[i + 1][j + 1], matrix[i + 1][j + 2]]
-        line3 = [matrix[i + 2][j], matrix[i + 2][j + 1], matrix[i + 2][j + 2]]
+        line1 = [matrix[i][j], matrix[i][j+1], matrix[i][j+2]]
+        line2 = [matrix[i+1][j], matrix[i+1][j+1], matrix[i+1][j+2]]
+        line3 = [matrix[i+2][j], matrix[i+2][j+1], matrix[i+2][j+2]]
         total = sum(line1) + sum(line2) + sum(line3)
 
         if total > maximum:
