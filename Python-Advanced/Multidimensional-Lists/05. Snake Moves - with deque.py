@@ -1,15 +1,16 @@
 from collections import deque
 
-row, col = [int(x) for x in input().split()]
-word = deque(list(input()))
+rows, cols = list(map(int, input().split()))
+word = input()
+deq = deque()
 
-for i in range(row):
+for index in range(rows):
     line = ""
-    for _ in range(col):
-        piece = word.popleft()
-        line += piece
-        word.append(piece)
-    if i % 2 == 0:
+    for _ in range(cols):
+        if not deq:
+            deq = deque(word)
+        line += deq.popleft()
+    if index % 2 == 0:
         print(line)
     else:
         print(line[::-1])
