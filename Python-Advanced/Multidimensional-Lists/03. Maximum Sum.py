@@ -1,23 +1,22 @@
-from itertools import chain
+row, col = [int(x) for x in input().split()]
+matrix = [[int(x) for x in input().split()] for _ in range(row)]
+total = 0
+maximum = -999999
 
-rows, cols = [int(x) for x in input().split()]
-matrix = [[int(x) for x in input().split()] for _ in range(rows)]
-maximum_sum = -999999
-biggest_matrix = []
+for i in range(row - 2):
+    for j in range(col - 2):
+        line1 = [matrix[i][j], matrix[i][j + 1], matrix[i][j + 2]]
+        line2 = [matrix[i + 1][j], matrix[i + 1][j + 1], matrix[i + 1][j + 2]]
+        line3 = [matrix[i + 2][j], matrix[i + 2][j + 1], matrix[i + 2][j + 2]]
+        total = sum(line1) + sum(line2) + sum(line3)
 
-for i in range(rows - 2):
-    for j in range(cols - 2):
-        sub_matrix = []
-        for y in range(i, i + 3):
-            add_value = []
-            for z in range(j, j + 3):
-                add_value.append(matrix[y][z])
-            sub_matrix.append(add_value)
+        if total > maximum:
+            maximum = total
+            best_line1 = line1
+            best_line2 = line2
+            best_line3 = line3
 
-        sum_res = sum(chain(*sub_matrix))
-        if sum_res > maximum_sum:
-            maximum_sum = sum_res
-            biggest_matrix = sub_matrix
-
-print(f"Sum = {maximum_sum}")
-print("\n".join(' '.join(map(str, x)) for x in biggest_matrix))
+print(f"Sum = {maximum}")
+print(" ".join(map(str, best_line1)))
+print(" ".join(map(str, best_line2)))
+print(" ".join(map(str, best_line3)))
