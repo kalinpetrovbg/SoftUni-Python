@@ -1,12 +1,10 @@
-rows, cols = [int(x) for x in input().split()]
-matrix = [[x for x in input().split()] for _ in range(rows)]
-
+row, col = [int(x) for x in input().split()]
+matrix = [[x for x in input().split()] for _ in range(row)]
 counter = 0
 
-for i in range(len(matrix) - 1):
-    for j in range(cols - 1):
-        current = matrix[i][j]
-        if current == matrix[i][j + 1] and matrix[i + 1][j] == matrix[i + 1][j + 1] and matrix[i + 1][j] == current:
+for i in range(row - 1):
+    for j in range(col - 1):
+        if matrix[i][j] == matrix[i][j+1] == matrix[i+1][j] == matrix[i+1][j+1]:
             counter += 1
 
 print(counter)
