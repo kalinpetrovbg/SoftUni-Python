@@ -1,13 +1,10 @@
-n = int(input())                # using comprehension
+n = int(input())
 matrix = [[int(x) for x in input().split()] for _ in range(n)]
-
-first_d = 0
-second_d = 0
-col = n - 1
+sum_first = 0
+sum_second = 0
 
 for index in range(n):
-    first_d += matrix[index][index]
-    second_d += matrix[index][col]
-    col -= 1
+    sum_first += matrix[index][index]
+    sum_second += matrix[index][n-1 - index]
 
-print(abs(first_d - second_d))
+print(abs(sum_first - sum_second))
