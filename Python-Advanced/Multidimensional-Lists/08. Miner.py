@@ -8,8 +8,7 @@ collected = 0
 for i in range(n):
     for j in range(n):
         if matrix[i][j] == "s":
-            pos.append(i)
-            pos.append(j)
+            pos.extend((i, j))
         if matrix[i][j] == "c":
             total_coals += 1
 
