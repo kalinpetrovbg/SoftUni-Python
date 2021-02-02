@@ -26,20 +26,22 @@ while commands:
         for z in range(cols):
             if matrix[y][z] == "B":
                 if 0 <= y+1 < rows and 0 <= z < cols:
-                    matrix[y+1][z] = "C"
+                    if matrix[y+1][z] != "B":
+                        matrix[y+1][z] = "C"
                 if 0 <= y - 1 < rows and 0 <= z < cols:
-                    matrix[y-1][z] = "C"
+                    if matrix[y-1][z] != "B":
+                        matrix[y-1][z] = "C"
                 if 0 <= y < rows and 0 <= z + 1 < cols:
-                    matrix[y][z+1] = "C"
+                    if matrix[y][z+1] != "B":
+                        matrix[y][z+1] = "C"
                 if 0 <= y < rows and 0 <= z - 1 < cols:
-                    matrix[y][z-1] = "C"
+                    if matrix[y][z - 1] != "B":
+                        matrix[y][z-1] = "C"
 
     for i in range(rows):
         for j in range(cols):
             if matrix[i][j] == "C":
                 matrix[i][j] = "B"
-
-
 
     if 0 > pos[0] or 0 > pos[1] or pos[0] >= rows or pos[1] >= cols:
         if commands[0] == "U":
