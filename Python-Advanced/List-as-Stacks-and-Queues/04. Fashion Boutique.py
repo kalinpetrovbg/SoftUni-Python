@@ -1,16 +1,13 @@
-clothes = input().split()
-MAX_CAPACITY = int(input())
-stack = [int(x) for x in clothes]
-current = 0
+clothes = [int(x) for x in input().split()]
+capacity = int(input())
 racks = 1
+current = capacity
 
-while len(stack) > 0:
-    item = stack.pop()
-    current += item
-    if current <= MAX_CAPACITY:
-        continue
-    else:
+while clothes:
+    if clothes[-1] > current:
+        current = capacity
         racks += 1
-        current = item
+    current -= clothes[-1]
+    clothes.pop()
 
 print(racks)
