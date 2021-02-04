@@ -1,22 +1,20 @@
-from collections import deque
+pumps = int(input())
+data = [[int(x) for x in input().split()] for _ in range(pumps)]
+found = False
 
-n = int(input())
-
-stations = deque([])
-
-for _ in range(n):
-    stations.append([el for el in input().split()])
-
-for big_circle in range(n):
-    is_valid = True
-    tank_petrol = 0
-    for small_circle in range(n):
-        tank_petrol += int(stations[small_circle][0]) - int(stations[small_circle][1])
-
-        if tank_petrol < 0:
-            is_valid = False
-            stations.append(stations.popleft())
-            break
-    if is_valid:
-        print(big_circle)
+for index in range(pumps):
+    current = 0
+    if found:
         break
+
+    for turn in range(pumps):
+        current += data[0 + turn][0]
+        if current < data[0 + turn][1]:
+            removed = data.pop(0)
+            data.append(removed)
+            break
+        else:
+            current -= data[0 + turn][1]
+            if turn == pumps - 1:
+                found = True
+                print(index)
