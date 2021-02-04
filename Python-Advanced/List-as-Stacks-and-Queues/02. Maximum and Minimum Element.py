@@ -1,22 +1,18 @@
-num = int(input())
+n = int(input())
 stack = []
-result = ""
+for _ in range(n):
+    numbers = [int(x) for x in input().split()]
 
-for _ in range(num):
-    command = input().split()
-    if command[0] == "1":
-        stack.append(int(command[1]))
-    elif command[0] == "2":
-        if len(stack) > 0:
+    if numbers[0] == 1:
+        stack.append(numbers[1])
+    elif numbers[0] == 2:
+        if stack:
             stack.pop()
-    elif command[0] == "3":
-        if len(stack) > 0:
+    elif numbers[0] == 3:
+        if stack:
             print(max(stack))
-    elif command[0] == "4":
-        if len(stack) > 0:
+    elif numbers[0] == 4:
+        if stack:
             print(min(stack))
 
-stack.reverse()
-
-stack = [str(x) for x in stack]
-print(", ".join(stack))
+print(*stack[::-1], sep=", ")
