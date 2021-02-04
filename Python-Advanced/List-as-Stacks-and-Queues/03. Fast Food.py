@@ -1,21 +1,17 @@
 from collections import deque
 
-food_capacity = int(input())
-q = deque([int(x) for x in input().split()])
+total = int(input())
+orders = deque([int(x) for x in input().split()])
 
-print(max(q))
+print(max(orders))
 
-while len(q) > 0:
-    current = q[0]
-    if current <= food_capacity:
-        q.popleft()
-        food_capacity -= current
-    else:
-        break
-
-result = [str(x) for x in q]
-
-if len(q) == 0:
+if sum(orders) <= total:
     print("Orders complete")
 else:
-    print(f"Orders left: {' '.join(result)}")
+    for order in range(len(orders)):
+        if total >= orders[0]:
+            completed = orders.popleft()
+            total -= completed
+        else:
+            print(f"Orders left: {' '.join(map(str, orders))}")
+            break
