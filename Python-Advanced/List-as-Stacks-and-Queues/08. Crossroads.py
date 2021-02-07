@@ -1,52 +1,45 @@
 from collections import deque
 
-green_light_duration = int(input())
-can_pass = int(input())
+green = int(input())
+window = int(input())
 command = input()
-
 cars = deque()
-counter = 0
+passed = 0
 crash = False
 
 while command != "END":
+    if crash:
+        break
 
     if command != "green":
-        car = command
-        cars.append(car)
+        cars.append(command)
 
-    else:
-        if cars:
-            current_car = cars.popleft()
-            current_car_length = len(current_car)
-            free_to_pass = green_light_duration - current_car_length
+    elif command == "green":
+        time = green
+        extra_time = window
 
-            while free_to_pass > 0:
-                counter += 1
-                if len(cars) > 0:
-                    current_car = cars.popleft()
-                    free_to_pass -= len(current_car)
-                else:
-                    break
-
-            if free_to_pass == 0:
-                counter += 1
-            if can_pass >= abs(free_to_pass):
-                if free_to_pass < 0:
-                    counter += 1
+        while time > 0:
+            if cars:
+                current_car = cars.popleft()
+                auto = current_car
             else:
-                none = can_pass + free_to_pass
-                print("A crash happened!")
-                print(f"{current_car} was hit at {current_car[none]}.")
-                crash = True
                 break
 
+            for i in range(len(current_car)):
+                current_car = list(current_car)
+                char = current_car.pop(0)
+                if len(current_car) == 0:
+                    passed += 1
+                time -= 1
+                if time < 0:
+                    extra_time -= 1
+                    if extra_time < 0:
+                        print("A crash happened!")
+                        print(f"{auto} was hit at {char}.")
+                        crash = True
+                        break
     command = input()
 
 if not crash:
-    print("Everyone is safe.")
-    print(f"{counter} total cars passed the crossroads.")
-
-
-
-
-    command = input()
+    print(f"Everyone is safe.")
+    print(f"{passed} total cars passed the crossroads.")
