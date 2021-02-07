@@ -1,7 +1,5 @@
 items = input().split("!")
 command = input()
-item = ""
-action = ""
 
 while command != "Go Shopping!":
 
@@ -10,18 +8,18 @@ while command != "Go Shopping!":
         if item not in items:
             items.insert(0, item)
 
-    if "Unnecessary" in command:
+    elif "Unnecessary" in command:
         action, item = command.split(" ")
         if item in items:
             items.remove(item)
 
-    if "Rearrange" in command:
+    elif "Rearrange" in command:
         action, item = command.split(" ")
         if item in items:
             items.remove(item)
             items.append(item)
 
-    if "Correct" in command:
+    elif "Correct" in command:
         action, old, new = command.split(" ")
         if old in items:
             items.insert(items.index(old), new)
