@@ -9,12 +9,11 @@ for each in rooms:
     room += 1
 
     if command == "potion":
-        old_health = health
-        health += number
-        if health >= 100:
-            print(f"You healed for {100 - old_health} hp.")
+        if health + number >= 100:
+            print(f"You healed for {100 - health} hp.")
             health = 100
         else:
+            health += number
             print(f"You healed for {number} hp.")
         print(f"Current health: {health} hp.")
 
