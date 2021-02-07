@@ -1,6 +1,7 @@
 n = int(input())
 plants = {}
 new_plants = {}
+
 for _ in range(n):
     name, rare = input().split("<->")
     plants[name] = [int(rare)]
@@ -9,28 +10,26 @@ data = input()
 
 while data != "Exhibition":
     data = data.replace(" - ", ": ")
+    data = data.split(": ")
 
-    if "Rate" in data:
-        _, plant, rating = data.split(": ")
+    if data[0] == "Rate":
+        plant, rating = data[1:]
         if plant in plants and int(rating) > 0:
             plants[plant].append(float(rating))
         else:
             print(f"error")
 
-    elif "Update" in data:
-        _, plant, rarity = data.split(": ")
+    elif data[0] == "Update":
+        plant, rarity = data[1:]
         if plant in plants and int(rarity) > 0:
             plants[plant][0] = int(rarity)
         else:
             print(f"error")
 
-    elif "Reset" in data:
-        _, plant = data.split(": ")
+    elif data[0] == "Reset":
+        plant = data[1]
         if plant in plants:
-            try:
-                del plants[plant][1]
-            except:
-                print(f"error")
+            del plants[plant][1:]
         else:
             print(f"error")
 
