@@ -6,12 +6,11 @@ middle = 0
 while not command == "end":
 
     middle = len(nums) // 2
-    maxx = len(nums)
     num1, num2 = [int(el) for el in command.split()]
 
     if True:
 
-        if num1 < 0 or num2 < 0 or num1 >= maxx or num2 >= maxx:     # wrong indexes
+        if num1 not in range(len(nums)) or num2 not in range(len(nums)) or num1 == num2:
             print("Invalid input! Adding additional elements to the board")
             nums.insert(middle, f"-{moves}a")
             nums.insert(middle, f"-{moves}a")
@@ -24,11 +23,6 @@ while not command == "end":
             else:
                 nums.pop(num2)
                 nums.pop(num1)
-
-        elif num1 == num2:                                         # cheat - two equal indexes
-            print("Invalid input! Adding additional elements to the board")
-            nums.insert(middle, f"-{moves}a")
-            nums.insert(middle, f"-{moves}a")
 
         elif nums[num1] != nums[num2]:
             print("Try again!")
