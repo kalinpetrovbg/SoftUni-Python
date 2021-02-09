@@ -9,11 +9,13 @@ for i in range(8):
         if matrix[i][j] == "K":
             pos.extend((i, j))
 
+
+print(pos)
+
 for i in range(8):
     for j in range(8):
         if matrix[i][j] == "Q":
             q = [i, j]
-            # queens.append([i, j])
 
             # horizontal right moves
             for index in range(1, 8):
