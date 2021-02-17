@@ -15,6 +15,7 @@ while data != "end of submissions":
 
     exam, passw, user, points = data.split("=>")
     if exam in contests and passw == contests[exam]:
+        points = int(points)
         if user not in students:
             students[user] = {exam: points}
         else:
@@ -45,5 +46,5 @@ print("Ranking:")
 
 for name, stats in sorted(students.items(), key=lambda x: x[0]):
     print(name)
-    for exams, points in sorted(stats.items(), key=lambda x: x[1]):
-        print(f"# {exams} -> {points}")
+    for exams, points in sorted(stats.items(), key=lambda x: -x[1]):
+        print(f"#  {exams} -> {points}")
