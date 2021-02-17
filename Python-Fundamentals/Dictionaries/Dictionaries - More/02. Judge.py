@@ -21,9 +21,14 @@ while data != "no more time":
     else:
         results[contest][username] = points
 
-
     data = input()
 
+
+
+
+
 print("Individual standings:")
-for name, score in sorted(totals.items(), key=lambda x: -x[0]):
-    print(f" {name} -> {score}")
+nums = 0
+for name, score in sorted(totals.items(), key=lambda x: -x[1]):
+    nums += 1
+    print(f"{nums}. {name} -> {score}")
