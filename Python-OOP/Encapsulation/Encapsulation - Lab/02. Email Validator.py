@@ -4,8 +4,8 @@ class EmailValidator:
         self.mails = mails
         self.domains = domains
 
-    def validate_name(self, name):
-        return self.min_length >= name
+    def __validate_name(self, name):
+        return len(name) >= self.min_length
 
     def __validate_mail(self, mail):
         return mail in self.mails
@@ -14,7 +14,9 @@ class EmailValidator:
         return domain in self.domains
 
     def validate(self, email):
-        self.__validate_mail(email)
+        name, rest = email.split("@")
+        mail, domain = rest.split(".")
+        return self.__validate_name(name) and self.__validate_mail(mail) and self.__validate_domain(domain)
 
 
 mails = ["gmail", "softuni"]
