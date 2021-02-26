@@ -3,7 +3,9 @@ class Cheetah:
         self.name = name
         self.gender = gender
         self.age = age
+        self.type = 'Cheetah'
 
+    @staticmethod
     def get_needs(self):
         return 60
 

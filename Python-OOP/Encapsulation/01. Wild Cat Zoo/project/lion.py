@@ -3,7 +3,9 @@ class Lion:
         self.name = name
         self.gender = gender
         self.age = age
+        self.type = 'Lion'
 
+    @staticmethod
     def get_needs(self):
         return 50
 
