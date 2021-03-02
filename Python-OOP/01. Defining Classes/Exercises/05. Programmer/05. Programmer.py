@@ -1,5 +1,5 @@
 class Programmer:
-    def __init__(self, name, language, skills):
+    def __init__(self, name, language: str, skills: int):
         self.name = name
         self.language = language
         self.skills = skills
@@ -11,14 +11,13 @@ class Programmer:
         return f"{self.name} does not know {language}"
 
     def change_language(self, new_language, skills_needed):
-        if new_language == self.language:
-            return f"{self.name} already knows {new_language}"
         if self.skills >= skills_needed:
-            old_language = self.language
-            self.language = new_language
-            return f"{self.name} switched from {old_language} to {new_language}"
+            if self.language != new_language:
+                previous_language = self.language
+                self.language = new_language
+                return f"{self.name} switched from {previous_language} to {new_language}"
+            return f"{self.name} already knows {new_language}"
         return f"{self.name} needs {skills_needed - self.skills} more skills"
-
 
 programmer = Programmer("John", "Java", 50)
 print(programmer.watch_course("Python Masterclass", "Python", 84))
