@@ -1,5 +1,5 @@
 class Trainer:
-    def __init__(self, name: str, ):
+    def __init__(self, name):
         self.name = name
         self.pokemon = []
 
@@ -10,9 +10,9 @@ class Trainer:
         return f'Caught {pokemon.pokemon_details()}'
 
     def release_pokemon(self, pokemon_name: str):
-        if pokemon_name not in [pok.name for pok in self.pokemon]:
+        if pokemon_name not in [p.name for p in self.pokemon]:
             return "Pokemon is not caught"
-        to_remove = [pok for pok in self.pokemon if pok.name == pokemon_name][0]
+        to_remove = [p for p in self.pokemon if p.name == pokemon_name][0]
         self.pokemon.remove(to_remove)
         return f"You have released {pokemon_name}"
 
