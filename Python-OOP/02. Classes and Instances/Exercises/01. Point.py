@@ -12,8 +12,7 @@ class Point:
         self.y = new_y
 
     def distance(self, x, y):
-        result = sqrt((x - self.x) ** 2 + (y - self.y) ** 2)
-        return result
+        return sqrt((x - self.x) ** 2 + (y - self.y) ** 2)
 
 p = Point(2, 4)
 p.set_x(3)
