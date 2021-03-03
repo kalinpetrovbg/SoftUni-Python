@@ -4,20 +4,22 @@ class Trainer:
         self.pokemon = []
 
     def add_pokemon(self, pokemon):
-        if pokemon.name in [p.name for p in self.pokemon]:
-            return f'This pokemon is already caught'
+        if pokemon in self.pokemon:
+            return f"This pokemon is already caught"
         self.pokemon.append(pokemon)
-        return f'Caught {pokemon.pokemon_details()}'
+        return f"Caught {pokemon.pokemon_details()}"
 
-    def release_pokemon(self, pokemon_name: str):
-        if pokemon_name not in [p.name for p in self.pokemon]:
+    def release_pokemon(self, pokemon_name):
+        try:
+            filtered = [p for p in self.pokemon if p.name == pokemon_name][0]
+            self.pokemon.remove(filtered)
+            return f"You have released {pokemon_name}"
+        except IndexError:
             return "Pokemon is not caught"
-        to_remove = [p for p in self.pokemon if p.name == pokemon_name][0]
-        self.pokemon.remove(to_remove)
-        return f"You have released {pokemon_name}"
 
     def trainer_data(self):
-        res = f'Pokemon Trainer {self.name}\nPokemon count {len(self.pokemon)}\n'
-        for x in self.pokemon:
-           res += f'- {x.pokemon_details()}\n'
+        res = f"Pokemon Trainer {self.name}\nPokemon count {len(self.pokemon)}\n"
+        for p in self.pokemon:
+            res += f"- {p.pokemon_details()}\n"
         return res
+
