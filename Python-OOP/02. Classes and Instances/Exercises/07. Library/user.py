@@ -1,26 +1,29 @@
 class User:
-    books = []
-
     def __init__(self, user_id, username):
         self.user_id = user_id
         self.username = username
+        self.books = []
 
     def get_book(self, author, book_name, days_to_return, library):
-        if book_name in Library.rented_books.items():
+        if book_name not in library.books_available.get(author):
             return f"The book \"{book_name}\" is already rented and will be available in {days_to_return} days!"
-        if book_name not in Library.books_available.items():
+        if book_name not in library.books_available.get(author):
             pass
-        if book_name in Library.books_available.items():
-            Library.books_available[book_name] = author
-            Library.rented_books[book_name] = author
+        if book_name in library.books_available.get(author):
             self.books.append(book_name)
+            if self.username not in library.rented_books:
+                library.rented_books[self.username] = {}
+            library.rented_books[self.username][book_name] = days_to_return
+            library.books_available[book_name] = author
+
+
             return f"{book_name} successfully rented for the next {days_to_return} days!"
 
     def return_book(self, author, book_name, library):
         if book_name not in self.books:
             return f"{self.username} doesn't have this book in his/her records!"
-        del Library.books_available[book_name]
-        del Library.rented_books[book_name]
+        del library.books_available[book_name]
+        del library.rented_books[book_name]
         self.books.remove(book_name)
 
     def info(self):
