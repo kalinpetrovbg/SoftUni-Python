@@ -1,22 +1,19 @@
-from user import User
-
 class Library:
-    user_records = []
-    books_available = {}
-    rented_books = {}
-
     def __init__(self):
-        pass
+        self.user_records = []
+        self.books_available = {}
+        self.rented_books = {}
 
     def add_user(self, user):
-        if user in Library.user_records:
-            return f"User with id = {user.id} already registered in the library!"
-        Library.user_records.append(user)
+        if user in self.user_records:
+            return f"User with id = {user.user_id} already registered in the library!"
+        self.user_records.append(user)
 
     def remove_user(self, user):
-        if user not in Library.user_records:
+        if user not in self.user_records:
             return "We could not find such user to remove!"
-        Library.user_records.remove(user)
+        self.user_records.remove(user)
+        # TODO
 
     def change_username(self, user_id, new_username):
         try:
