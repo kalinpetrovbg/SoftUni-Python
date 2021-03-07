@@ -17,7 +17,7 @@ class Library:
 
     def change_username(self, user_id, new_username):
         try:
-            is_in = [u for u in User if u.user_id == user_id][0]
+            is_in = [u for u in self.user_records if u.user_id == user_id][0]
             if is_in.username == new_username:
                 return f"Please check again the provided username - " \
                        f"it should be different than the username used so far!"
