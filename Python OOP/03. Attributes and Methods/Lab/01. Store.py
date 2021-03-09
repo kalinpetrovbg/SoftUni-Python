@@ -1,34 +1,31 @@
-from collections import defaultdict
-
-
 class Store:
-    def __init__(self, name: str, type: str, capacity: int):
+    def __init__(self, name, type, capacity):
         self.name = name
         self.type = type
         self.capacity = capacity
-        self.items = defaultdict(int)
+        self.items = {}
 
     @classmethod
-    def from_size(cls, name: str, type: str, size: int):
-        capacity: int = size // 2
+    def from_size(cls, name, type, size):
+        capacity = size // 2
         return cls(name, type, capacity)
 
-    def add_item(self, item_name: str):
-        total_items = sum(self.items.values())
-        if not (total_items < self.capacity):
-            return 'Not enough capacity in the store'
-        self.items[item_name] += 1
-        return f'{item_name} added to the store'
+    def add_item(self, item_name):
+        products_count = sum(self.items.values())
+        if products_count < self.capacity:
+            self.items[item_name] = 0
+            self.items[item_name] += 1
+            return f"{item_name} added to the store"
+        return "Not enough capacity in the store"
 
-    def remove_item(self, item_name: str, amount: int):
-        if amount > self.items[item_name]:
-            return f'Cannot remove {amount} {item_name}'
-        self.items[item_name] -= amount
-        return f'{amount} {item_name} removed from the store'
+    def remove_item(self, item_name, amount):
+        if item_name in self.items and self.items[item_name] >= amount:
+            self.items[item_name] -= amount
+            return f"{amount} {item_name} removed from the store"
+        return f"Cannot remove {amount} {item_name}"
 
     def __repr__(self):
-        return f'{self.name} of type {self.type} with capacity {self.capacity}'
-
+        return f"{self.name} of type {self.type} with capacity {self.capacity}"
 
 first_store = Store("First store", "Fruit and Veg", 20)
 second_store = Store.from_size("Second store", "Clothes", 500)
