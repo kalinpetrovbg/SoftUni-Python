@@ -1,27 +1,33 @@
-import operator
-from functools import reduce
-
-
 class Calculator:
+
     @staticmethod
     def add(*args):
-        return reduce(operator.add, args)
+        return sum(args)
 
     @staticmethod
     def multiply(*args):
-        return reduce(operator.mul, args)
+        res = 1
+        for each in args:
+            res *= each
+        return res
 
     @staticmethod
-    def divide(*args):
-        return reduce(operator.truediv, args)
+    def divide(start, *args):
+        res = start
+        for each in args:
+            res /= each
+        return res
 
     @staticmethod
-    def subtract(*args):
-        return reduce(operator.sub, args)
+    def subtract(start, *args):
+        res = start
+        for each in args:
+            res -= each
+        return res
 
 
-print(Calculator.add(1, 2, 3))
 print(Calculator.add(5, 10, 4))
 print(Calculator.multiply(1, 2, 3, 5))
 print(Calculator.divide(100, 2))
 print(Calculator.subtract(90, 20, -50, 43, 7))
+
