@@ -6,19 +6,34 @@ class Hotel:
 
     @classmethod
     def from_stars(cls, stars_count):
-        pass
+        return cls(f"{stars_count} stars Hotel")
 
     def add_room(self, room):
-        pass
+        if room not in self.rooms:
+            self.rooms.append(room)
+            self.guests += room.guests
 
     def take_room(self, room_number, people):
-        pass
+        try:
+            find_room = [r for r in self.rooms if r.number == room_number][0]
+            if find_room.capacity >= people and find_room.is_taken == False:
+                self.guests = people
+                find_room.is_taken = True
+        except IndexError:
+            pass
 
     def free_room(self, room_number):
-        pass
+        try:
+            to_remove = [r for r in self.rooms if room_number == r.number][0]
+            self.rooms.remove(to_remove)
+        except IndexError:
+            pass
 
     def print_status(self):
-        result = f"Hotel {self.name} has {self.guests} total guests"
-        # result += f"Free rooms:{}"
-        # result += f"Taken rooms:{}"
-        return result
+        print(f"Hotel {self.name} has {self.guests} total guests")
+
+        free_rooms = [r.number for r in self.rooms if r.is_taken == False]
+        taken_rooms = [r.number for r in self.rooms if r.is_taken != False]
+
+        print(f"Free rooms: {', '.join(str(x) for x in free_rooms)}")
+        print(f"Taken rooms: {', '.join(str(x) for x in taken_rooms)}")
