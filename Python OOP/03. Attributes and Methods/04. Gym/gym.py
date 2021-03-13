@@ -28,21 +28,10 @@ class Gym:
             self.subscriptions.append(subscription)
 
     def subscription_info(self, subscription_id):
-        res = ""
-        for s in self.subscriptions:
-            if s.id == subscription_id:
-                res += f"{s}\n"
-        for c in self.customers:
-            if c.id == subscription_id:
-                res += f"{c}\n"
-        for t in self.trainers:
-            if t.id == subscription_id:
-                res += f"{t}\n"
-        for e in self.equipment:
-            if e.id == subscription_id:
-                res += f"{e}\n"
-        for p in self.plans:
-            if p.id == subscription_id:
-                res += f"{p}"
+        cur_subscription = [s for s in self.subscriptions if s.id == subscription_id][0]
+        customer = [c for c in self.customers if c.id == cur_subscription.customer_id][0]
+        trainer = [t for t in self.trainers if t.id == cur_subscription.trainer_id][0]
+        plan = [p for p in self.plans if p.trainer_id == trainer.id][0]
+        equipment = [e for e in self.equipment if e.id == plan.equipment_id][0]
 
-        return res
+        return f"{cur_subscription}\n{customer}\n{trainer}\n{equipment}\n{plan}"
