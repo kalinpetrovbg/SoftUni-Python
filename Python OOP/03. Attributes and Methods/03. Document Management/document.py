@@ -1,16 +1,16 @@
 class Document:
-    def __init__(self, id, category_id, topic_id, file_mame):
+    def __init__(self, id, category_id, topic_id, file_name):
         self.id = id
         self.category_id = category_id
         self.topic_id = topic_id
-        self.file_name = file_mame
+        self.file_name = file_name
         self.tags = []
 
     @classmethod
     def from_instances(cls, id, category, topic, file_name):
         id = id
-        category_id = category
-        topic_id = topic
+        category_id = category.id
+        topic_id = topic.id
         file_name = file_name
         return cls(id, category_id, topic_id, file_name)
 
