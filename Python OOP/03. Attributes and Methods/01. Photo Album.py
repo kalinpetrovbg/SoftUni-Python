@@ -4,6 +4,7 @@ class PhotoAlbum:
         self.photos = [[] for _ in range(self.pages)]
         self.counter = 0
         self.page = 0
+        self.max = 0
 
     @classmethod
     def from_photos_count(cls, photos_count):
@@ -15,6 +16,11 @@ class PhotoAlbum:
             self.counter = 0
         self.photos[self.page].append(label)
         self.counter += 1
+
+        self.max += 1
+        if self.max + 1 == self.pages * 4:
+            return "No more free spots"
+
         return f"{label} photo added successfully on page {self.page +1} " \
                f"slot {self.counter}"
 
@@ -34,5 +40,8 @@ print(album.add_photo("party with friends"))
 print(album.photos)
 print(album.add_photo("prom"))
 print(album.add_photo("wedding"))
+print(album.add_photo("party with friends"))
+print(album.add_photo("first grade"))
+print(album.add_photo("end"))
 
 print(album.display())
