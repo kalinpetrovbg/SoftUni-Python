@@ -56,7 +56,7 @@ class Player:
         self.__shooting = new_shooting
 
     def __str__(self):
-        return f""""Player: {self.name}
+        return f"""Player: {self.name}
 Endurance: {self.endurance}
 Sprint: {self.sprint}
 Dribble: {self.dribble}
