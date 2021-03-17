@@ -19,18 +19,19 @@ class Zoo:
             return "Not enough space for animal"
 
     def hire_worker(self, worker):
-        if self.__workers_capacity > 0:
+        if self.__workers_capacity > len(self.workers):
             self.workers.append(worker)
-            self.__workers_capacity -= 1
             return f"{worker.name} the {type(worker).__name__} hired successfully"
-        else:
-            return f"Not enough space for worker"
+        return f"Not enough space for worker"
 
     def fire_worker(self, worker_name):
-        fired = [w for w in self.workers if w.name == worker_name][0]
-        self.workers.remove(fired)
-        self.__workers_capacity += 1
-        return f"{worker_name} fired successfully"
+        try:
+            fired = [w for w in self.workers if w.name == worker_name][0]
+            self.workers.remove(fired)
+            self.__workers_capacity += 1
+            return f"{worker_name} fired successfully"
+        except IndexError:
+            return f"There is no {worker_name} in the zoo"
 
     def pay_workers(self):
         worker_cost = sum([w.salary for w in self.workers])
@@ -58,13 +59,10 @@ class Zoo:
         tig = "\n".join(map(str, tigers))
         che = "\n".join(map(str, cheetahs))
 
-        result = f"You have {len(self.animals)} animals\n"
-        result += f"----- {len(lions)} Lions:\n"
-        result += f"{lio}\n"
-        result += f"----- {len(tigers)} Tigers:\n"
-        result += f"{tig}\n"
-        result += f"----- {len(cheetahs)} Cheetahs:\n"
-        result += f"{che}"
+        result = f"""You have {len(self.animals)} animals
+----- {len(lions)} Lions:\n{lio}
+----- {len(tigers)} Tigers:\n{tig}
+----- {len(cheetahs)} Cheetahs:\n{che}"""
         return result
 
     def workers_status(self):
@@ -75,11 +73,8 @@ class Zoo:
         car = "\n".join(map(str, caretakers))
         vet = "\n".join(map(str, vets))
 
-        result = f"You have {len(self.workers)} workers\n"
-        result += f"----- {len(keepers)} Keepers:\n"
-        result += f"{kee}\n"
-        result += f"----- {len(caretakers)} Caretakers:\n"
-        result += f"{car}\n"
-        result += f"----- {len(vets)} Vet:\n"
-        result += f"{vet}"
+        result = f"""You have {len(self.workers)} workers
+----- {len(keepers)} Keepers:\n{kee}
+----- {len(caretakers)} Caretakers:\n{car}
+----- {len(vets)} Vets:\n{vet}"""
         return result
