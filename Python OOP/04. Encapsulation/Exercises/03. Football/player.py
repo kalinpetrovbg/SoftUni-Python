@@ -54,3 +54,12 @@ class Player:
     @shooting.setter
     def shooting(self, new_shooting):
         self.__shooting = new_shooting
+
+    def __str__(self):
+        return f""""Player: {self.name}
+Endurance: {self.endurance}
+Sprint: {self.sprint}
+Dribble: {self.dribble}
+Passing: {self.passing}
+Shooting: {self.shooting}
+"""
