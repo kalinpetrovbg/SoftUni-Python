@@ -18,4 +18,3 @@ class Topping:
     @weight.setter
     def weight(self, new_weight):
         self.weight = new_weight
-
