@@ -27,3 +27,16 @@ class Team:
     @players.setter
     def players(self, new_players):
         self.__players = new_players
+
+    def add_player(self, player):
+        if player not in self.players:
+            return f"Player {player.name} joined team {self.name}"
+        return f"Player {player.name} has already joined"
+
+    def remove_player(self, player_name):
+        try:
+            to_remove = [p for p in self.players if p.name == player_name][0]
+            self.players.remove(to_remove)
+            return to_remove
+        except IndexError:
+            return f"Player {player_name} not found"
