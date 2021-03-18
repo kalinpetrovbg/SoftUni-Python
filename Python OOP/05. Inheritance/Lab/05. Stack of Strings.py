@@ -1,6 +1,5 @@
-class Stack(str):
+class Stack:
     def __init__(self):
-        super().__init__()
         self.data = []
 
     def push(self, item):
@@ -16,7 +15,7 @@ class Stack(str):
         return len(self.data) == 0
 
     def __str__(self):
-        return self.data
+        return f"{self.data}"
 
 
 # test zero

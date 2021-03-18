@@ -1,14 +1,9 @@
-from random import random
+import random
 
 class RandomList(list):
-    def __init__(self):
-        pass
-
-    def remove_element(self):
-        pass
-
-    @staticmethod
-    def get_random_element():
-        pass
+    def get_random_element(self):
+        element = random.choice(self)
+        self.pop(self.index(element))
+        return element
 
 
