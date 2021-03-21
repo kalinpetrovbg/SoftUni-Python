@@ -1,22 +1,27 @@
 class Animal:
-    pass
+        def __init__(self, species):
+            self.species = species
+
+        def get_species(self):
+            return self.species
+
 
 class Cat(Animal):
-    def animal_sound(self):
+    def make_sound(self):
         return 'meow'
 
 class Dog(Animal):
-    def animal_sound(self):
+    def make_sound(self):
         return 'woof-woof'
 
 
 def animal_sound(animals):
     for a in animals:
-        return a.animal_sound()
+        a.make_sound()
 
 
-animals = [Cat(), Dog()]
-print(animal_sound(animals))
+animals = [Animal('cat'), Animal('dog')]
+animal_sound(animals)
 
 ## добавете ново животно и рефакторирайте кода да работи без да се налага да се правят промени по него
 ## при добавяне на нови животни
