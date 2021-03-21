@@ -9,4 +9,23 @@ class Library:
 
     def find_book(self, title):
         found = [b for b in self.books if b.title == title][0]
-        return found
+        return f"Book found: {found.title}"
+
+    def add_book(self, book):
+        self.books.append(book)
+
+    def remove_book(self, book):
+        self.books.remove(book)
+
+
+a = Book("History", "Kalin Petrov")
+b = Book("Math", "Kalin Petrov")
+c = Book("Spanish", "Kalin Petrov")
+
+lib = Library([])
+
+lib.add_book(a)
+lib.add_book(b)
+lib.add_book(c)
+
+print(lib.find_book("Spanish"))
