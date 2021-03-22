@@ -8,23 +8,23 @@ class Robot:
         return self.type
 
     @staticmethod
-    def count_senzors():
+    def count_sensors():
         pass
 
 
 class Android(Robot):
-    def count_senzors(self):
+    def count_sensors(self):
         return 4
 
 
 class Chappie(Robot):
-    def count_senzors(self):
+    def count_sensors(self):
         return 6
 
 
 def count_robot_senzors(robots: list):
     for robot in robots:
-        print(robot.count_senzors())
+        print(robot.count_sensors())
 
 robots = [Android('Robocop'), Chappie('XIX')]
 count_robot_senzors(robots)
