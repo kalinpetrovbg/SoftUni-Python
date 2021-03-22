@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Animal(ABC):
+class Animal:
     def __init__(self, species):
         self.species = species
 
@@ -13,20 +13,19 @@ class Animal(ABC):
 
 class Cat(Animal):
     def make_sound(self):
-        return 'meow'
+        return "meow"
 
 class Dog(Animal):
     def make_sound(self):
-        return 'woof-woof'
+        return "wouf-wouf"
 
 class Chicken(Animal):
     def make_sound(self):
         return "chick-chirik"
 
-def animal_sound(animals: list[Animal]):
+def animal_sound(animals: list):
     for animal in animals:
         print(animal.make_sound())
 
-
-animals = [Animal('cat'), Animal('dog'), Animal('chicken')]
+animals = [Cat('cat'), Dog('dog'), Chicken('chicken')]
 animal_sound(animals)
