@@ -13,6 +13,7 @@ class vowels:
         self.index += 1
         if current_letter.lower() in "aeoiyu":
             return current_letter
+        return self.__next__()
 
 
 my_string = vowels('Abcedifuty0o')
