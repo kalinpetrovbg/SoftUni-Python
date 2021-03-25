@@ -6,6 +6,7 @@ def get_primes(ll):
         for i in range(2, each):
             if each % i == 0:
                 is_prime = False
+                break
         if is_prime:
             yield each
 
