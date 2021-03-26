@@ -2,9 +2,7 @@ def type_check(value):
     def inner(func):
         def wrapper(*args):
             for a in args:
-                if type(a) == value:
-                    continue
-                else:
+                if type(a) != value:
                     return "Bad Type"
             result = func(*args)
             return result
