@@ -1,8 +1,8 @@
-def multiply(times):
+def multiply(n):
     def inner(function):
         def decorator(*args, **kwargs):
             result = function(*args, **kwargs)
-            return result * times
+            return result * n
         return decorator
     return inner
 
