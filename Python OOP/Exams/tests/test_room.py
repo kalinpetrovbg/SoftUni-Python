@@ -9,9 +9,7 @@ class TestRoom(unittest.TestCase):
         self.child1 = Child(5, 3)
         self.child2 = Child(10, 6)
 
-    def test_add_children(self):                              # 1 test
-        self.room.children = [self.child1, self.child2]
-        self.assertEqual(self.room.children, [self.child1, self.child2])
+    def test_room_expenses_is_zero(self):                     # 1 test
         self.assertEqual(self.room.expenses, 0)
 
     def test_empty_children_list(self):                       # 2 test
