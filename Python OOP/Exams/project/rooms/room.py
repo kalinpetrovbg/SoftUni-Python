@@ -1,9 +1,3 @@
-from project.appliances.tv import TV
-from project.appliances.laptop import Laptop
-from project.appliances.fridge import Fridge
-from project.appliances.stove import Stove
-from project.people.child import Child
-
 class Room:
     def __init__(self, family_name, budget, members_count):
         self.family_name = family_name

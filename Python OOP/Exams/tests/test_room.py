@@ -1,13 +1,9 @@
 from project.rooms.room import Room
-from project.people.child import Child
-
 import unittest
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room = Room("Petrovi", 3000, 4)
-        self.child1 = Child(5, 3)
-        self.child2 = Child(10, 6)
 
     def test_room_expenses_is_zero(self):                     # 1 test
         self.assertEqual(self.room.expenses, 0)
@@ -24,7 +20,6 @@ class TestRoom(unittest.TestCase):
         with self.assertRaises(ValueError) as ex:
             self.room.expenses = -10
         self.assertEqual("Expenses cannot be negative", str(ex.exception))
-
 
 
 if __name__ == "__main__":
