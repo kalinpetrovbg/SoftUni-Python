@@ -1,6 +1,5 @@
 from .factory import Factory
 
-
 class PaintFactory(Factory):
     def __init__(self, name: str, capacity: int):
         super().__init__(name, capacity)
@@ -28,3 +27,12 @@ class PaintFactory(Factory):
     @property
     def products(self):
         return self.ingredients
+
+
+# p = PaintFactory("Factory", 100)
+# print(p.name)
+# print(p.capacity)
+# p.add_ingredient("white", 4)
+# print(p.products)
+# p.valid_ingredients = ["blackish"]
+# print(p.valid_ingredients)
