@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from project.survivor import Survivor
 
 
@@ -10,8 +10,11 @@ class Supply(ABC):
     def needs_increase(self):
         return self.__needs_increase
 
-    @abstractmethod
+    @needs_increase.setter
+    def needs_increase(self, value):
+        if value < 0:
+            raise ValueError('Needs increase cannot be less than zero.')
+        self.__needs_increase = value
+
     def apply(self, survivor: Survivor):
         survivor.needs += self.__needs_increase
-        if survivor.needs > 100:
-            survivor.needs = 100
