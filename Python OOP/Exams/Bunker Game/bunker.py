@@ -1,62 +1,72 @@
-from project.survivor import Survivor
-from project.supply.supply import Supply
-from project.medicine.medicine import Medicine
-from project.supply.supply import Supply
-from project.supply.food_supply import FoodSupply
-from project.supply.water_supply import WaterSupply
-
 class Bunker:
-    def __init__(self, survivors, supplies, medicine):
-        self.survivors = list(survivors)
-        self.supplies = list(supplies)
-        self.medicine = list(medicine)
-        self.__food = []
-        self.__water = []
-        self.__painkillers = []
-        self.__salves = []
+    def __init__(self):
+        self.survivors = []
+        self.supplies = []
+        self.medicine = []
 
     @property
     def food(self):
-        return self.__food
+        list_of_foods = [x for x in self.supplies if x.__class__.__name__ == 'FoodSupply']
+        if len(list_of_foods) == 0:
+            raise IndexError('There are no food supplies left!')
+        return list_of_foods
 
+    @property
     def water(self):
-        return self.__water
+        list_of_waters = [x for x in self.supplies if x.__class__.__name__ == 'WaterSupply']
+        if len(list_of_waters) == 0:
+            raise IndexError('There are no water supplies left!')
+        return list_of_waters
 
+    @property
     def painkillers(self):
-        return self.__painkillers
+        list_of_painkillers = [x for x in self.medicine if x.__class__.__name__ == 'Painkiller']
+        if len(list_of_painkillers) == 0:
+            raise IndexError('There are no painkillers left!')
+        return list_of_painkillers
 
+    @property
     def salves(self):
-        return self.__salves
+        list_of_salves = [x for x in self.medicine if x.__class__.__name__ == 'Salve']
+        if len(list_of_salves) == 0:
+            raise IndexError('There are no salves left!')
+        return list_of_salves
 
-    def add_survivor(self, survivor: Survivor):
+    def add_survivor(self, survivor):
         if survivor in self.survivors:
-            raise ValueError(f"Survivor with name {survivor.name} already exists.")
-        else:
-            self.survivors.append(survivor)
+            raise ValueError(f'Survivor with name {survivor.name} already exists.')
+        self.survivors.append(survivor)
 
-    def add_supply(self, supply: Supply):
+    def add_supply(self, supply):
         self.supplies.append(supply)
 
-    def add_medicine(self, medicine: Medicine):
+    def add_medicine(self, medicine):
         self.medicine.append(medicine)
 
-    def heal(self, survivor: Survivor, medicine_type):
+    def heal(self, survivor, medicine_type):
         if survivor.needs_healing:
-            to_remove = [m for m in self.medicine if m.__class__.__name__ == medicine_type]
-            Medicine.apply(self, survivor)
-            self.medicine.remove(to_remove)
+            if medicine_type == "Salve":
+                current = self.salves.pop()
+            else:
+                current = self.painkillers.pop()
+            self.medicine.remove(current)
+            current.apply(survivor)
             return f"{survivor.name} healed successfully with {medicine_type}"
+        return
 
-    def sustain(self, survivor: Survivor, sustenance_type):
+    def sustain(self, survivor, sustenance_type):
         if survivor.needs_sustenance:
-            to_remove = [f for f in self.food if f.__class__.__name__ == sustenance_type]
-            Supply.apply(self, survivor)
-            self.supplies.remove(to_remove)
-            return f"{survivor.name} healed successfully with {sustenance_type}"
+            if sustenance_type == "FoodSupply":
+                current = self.food.pop()
+            else:
+                current = self.water.pop()
+            self.supplies.remove(current)
+            current.apply(survivor)
+            return f"{survivor.name} sustained successfully with {sustenance_type}"
+        return
 
     def next_day(self):
-        for s in self.survivors:
-            s.needs -= (s.age * 2)
-
-        for s in self.survivors
-            Water.
+        for each in self.survivors:
+            each.needs -= (each.age * 2)
+            self.sustain(each, "FoodSupply")
+            self.sustain(each, "WaterSupply")
