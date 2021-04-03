@@ -12,14 +12,14 @@ class Room:
         return self._expenses
 
     @expenses.setter
-
-
     def expenses(self, value):
         if value < 0:
             raise ValueError("Expenses cannot be negative")
         else:
             self._expenses = value
 
-    def calculate_expenses(self, *args):
-        items = sum([a.cost for a in args[0]])
-        self.expenses = items
+    def calculate_expenses(self):
+        ll = self.appliances + self.children
+        value = sum([element.cost for element in ll])
+        self.expenses = value
+        return value

@@ -1,8 +1,6 @@
 from rooms.young_couple import YoungCouple
 from rooms.young_couple_with_children import YoungCoupleWithChildren
-
 from people.child import Child
-
 from everland import Everland
 
 everland = Everland()

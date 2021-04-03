@@ -7,8 +7,4 @@ class AloneOld(Room):
         super().__init__(family_name, budget=pension, members_count=1)
         self.room_cost = 10
         self.appliances = [TV()]
-        self.expenses = self.calculate_expenses(self.appliances)
-
-
-a = AloneOld("petrov", 100)
-print(a.expenses)
+        self.expenses = self.calculate_expenses() * 30
