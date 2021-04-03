@@ -9,4 +9,4 @@ class OldCouple(Room):
         super().__init__(family_name, budget=pension_one+pension_two, members_count=2)
         self.room_cost = 15
         self.appliances = [TV(), Fridge(), Stove()] * 2
-        self.expenses = self.calculate_expenses() * 30
+        self._expenses = self.calculate_expenses() * 30

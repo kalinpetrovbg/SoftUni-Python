@@ -5,7 +5,8 @@ class Room:
         self.members_count = members_count
         self.children = []
         self.appliances = []
-        self._expenses = 0
+        self._expenses = self.calculate_expenses()
+        self.child_expenses = 0
 
     @property
     def expenses(self):
@@ -18,8 +19,8 @@ class Room:
         else:
             self._expenses = value
 
-    def calculate_expenses(self):
+    def calculate_expenses(self, *args):
         ll = self.appliances + self.children
-        value = sum([element.cost for element in ll])
+        value = round(sum([element.cost for element in ll]), 2)
         self.expenses = value
         return value

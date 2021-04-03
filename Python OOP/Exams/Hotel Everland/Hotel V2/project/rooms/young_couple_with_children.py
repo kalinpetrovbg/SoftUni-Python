@@ -2,7 +2,6 @@ from project.rooms.room import Room
 from project.appliances.tv import TV
 from project.appliances.laptop import Laptop
 from project.appliances.fridge import Fridge
-from project.people.child import Child
 
 
 class YoungCoupleWithChildren(Room):
@@ -11,4 +10,5 @@ class YoungCoupleWithChildren(Room):
         self.children = list(children)
         self.room_cost = 30
         self.appliances = [TV(), Fridge(), Laptop()] * self.members_count
-        self.expenses = self.calculate_expenses() * 30
+        self._expenses = self.calculate_expenses() * 30
+        self.child_expenses = sum([c.cost for c in self.children]) * 30
