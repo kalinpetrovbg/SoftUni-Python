@@ -1,5 +1,7 @@
 from project.hardware.heavy_hardware import HeavyHardware
 from project.hardware.power_hardware import PowerHardware
+from project.software.light_software import LightSoftware
+from project.software.express_software import ExpressSoftware
 
 
 class System:
@@ -24,11 +26,23 @@ class System:
 
     @staticmethod
     def register_express_software(hardware_name, name, capacity_consumption, memory_consumption):
-        pass
+        try:
+            have_it = [h for h in System._hardware if h.name == hardware_name][0]
+            new = ExpressSoftware(name, capacity_consumption, memory_consumption)
+            have_it.install(new)
+            System._software.append(new)
+        except IndexError:
+            return "Hardware does not exist"
 
     @staticmethod
     def register_light_software(hardware_name, name, capacity_consumption, memory_consumption):
-        pass
+        try:
+            have_it = [h for h in System._hardware if h.name == hardware_name][0]
+            new = LightSoftware(name, capacity_consumption, memory_consumption)
+            have_it.install(new)
+            System._software.append(new)
+        except IndexError:
+            return "Hardware does not exist"
 
     @staticmethod
     def release_software_component(hardware_name, software_name):
