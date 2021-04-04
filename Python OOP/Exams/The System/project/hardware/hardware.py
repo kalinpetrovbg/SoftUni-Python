@@ -5,6 +5,8 @@ class Hardware:
         self.capacity = capacity
         self.memory = memory
         self.software_components = []
+        self.used_capacity = 0
+        self.used_memory = 0
 
     def install(self, software):
         pass
