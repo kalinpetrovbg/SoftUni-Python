@@ -5,16 +5,22 @@ from project.hardware.power_hardware import PowerHardware
 class System:
     _hardware = []
     _software = []
+    total_hardware_memory = 0
+    total_hardware_capacity = 0
 
     @staticmethod
     def register_power_hardware(name, capacity, memory):
         new = PowerHardware(name, capacity, memory)
         System._hardware.append(new)
+        System.total_hardware_memory += new.memory
+        System.total_hardware_capacity += new.capacity
 
     @staticmethod
     def register_heavy_hardware(name, capacity, memory):
         new = HeavyHardware(name, capacity, memory)
         System._hardware.append(new)
+        System.total_hardware_memory += new.memory
+        System.total_hardware_capacity += new.capacity
 
     @staticmethod
     def register_express_software(hardware_name, name, capacity_consumption, memory_consumption):
@@ -34,8 +40,8 @@ class System:
         res.append("System Analysis")
         res.append(f"Hardware Components: {len(System._hardware)}")
         res.append(f"Software Components: {len(System._software)}")
-        res.append(f"Total Operational Memory: ")
-        res.append(f"Total Capacity Taken: ")
+        res.append(f"Total Operational Memory: / {System.total_hardware_memory:.0f}")
+        res.append(f"Total Capacity Taken: / {System.total_hardware_capacity:.0f}")
         return "\n".join(res)
 
     @staticmethod
