@@ -54,8 +54,10 @@ class System:
         res.append("System Analysis")
         res.append(f"Hardware Components: {len(System._hardware)}")
         res.append(f"Software Components: {len(System._software)}")
-        res.append(f"Total Operational Memory: / {System.total_hardware_memory:.0f}")
-        res.append(f"Total Capacity Taken: / {System.total_hardware_capacity:.0f}")
+        res.append(f"Total Operational Memory: {sum([s.capacity_consumption for s in System._software])} "
+                   f"/ {System.total_hardware_memory:.0f}")
+        res.append(f"Total Capacity Taken: {sum([s.memory_consumption for s in System._software])}"
+                   f"/ {System.total_hardware_capacity:.0f}")
         return "\n".join(res)
 
     @staticmethod
