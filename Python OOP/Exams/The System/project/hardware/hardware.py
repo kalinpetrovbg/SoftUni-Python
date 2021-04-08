@@ -5,11 +5,17 @@ class Hardware:
         self.capacity = capacity
         self.memory = memory
         self.software_components = []
-        self.used_capacity = 0
-        self.used_memory = 0
+        self.cur_capacity = capacity
+        self.cur_memory = memory
 
     def install(self, software):
-        pass
+        if software.capacity_consumption <= self.cur_capacity and software.memory_consumption <= self.cur_memory:
+            self.software_components.append(software)
+            self.cur_capacity -= software.capacity_consumption
+            self.cur_memory -= software.memory_consumption
+        else:
+            raise Exception("Software cannot be installed")
 
     def uninstall(self, software):
-        pass
+        if software in self.software_components:
+            self.software_components.remove(software)
