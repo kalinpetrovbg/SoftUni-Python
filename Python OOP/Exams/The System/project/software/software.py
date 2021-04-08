@@ -4,4 +4,3 @@ class Software:
         self.type = type
         self.capacity_consumption = capacity_consumption
         self.memory_consumption = memory_consumption
-
