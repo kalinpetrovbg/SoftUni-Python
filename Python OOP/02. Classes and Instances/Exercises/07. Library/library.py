@@ -13,7 +13,6 @@ class Library:
         if user not in self.user_records:
             return "We could not find such user to remove!"
         self.user_records.remove(user)
-        # TODO
 
     def change_username(self, user_id, new_username):
         try:

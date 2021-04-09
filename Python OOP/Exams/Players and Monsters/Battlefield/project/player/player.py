@@ -10,7 +10,7 @@ class Player(ABC):
 
     @property
     def username(self):
-        self.username = self._username
+        return self._username
 
     @username.setter
     def username(self, value):
@@ -20,7 +20,7 @@ class Player(ABC):
 
     @property
     def health(self):
-        self.health = self._health
+        return self._health
 
     @health.setter
     def health(self, value):
@@ -31,5 +31,8 @@ class Player(ABC):
 
     @property
     def is_dead(self):
-        self._is_dead = self._is_dead
-    
+        return self._is_dead
+
+    @is_dead.setter
+    def is_dead(self, value):
+        self._is_dead = value
