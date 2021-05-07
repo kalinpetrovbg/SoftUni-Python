@@ -1,0 +1,11 @@
+FROM NAKOV WITH LOVE
+
+LANGUAGE COMPARISON - https://www.youtube.com/watch?v=uunu1aHXCQw
+HTTP BASICS - https://www.youtube.com/watch?v=dHmzup-ca1w
+SOFTWARE DEVELOPMENT CONCEPTS PART 1 - https://www.youtube.com/watch?v=5gk4jbyt5O0
+SOFTWARE DEVELOPMENT CONCEPTS PART 2 - https://www.youtube.com/watch?v=Cw3Izl0LUPs
+BITWISE OPERATIONS - https://www.youtube.com/watch?v=LvbLKI2-8DI
+PROBLEM SOLVING - https://www.youtube.com/watch?v=2UzAsds1UJY
+DATABASE BASICS - https://www.youtube.com/watch?v=5g7UJOWo2h8
+GIT AND GITHUB - https://www.youtube.com/watch?v=zGET1KftOvQ
+QA INTRODUCTION - https://www.youtube.com/watch?v=ynzXnH3CzNw
