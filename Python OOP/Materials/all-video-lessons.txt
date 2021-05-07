@@ -1,0 +1,30 @@
+PYTHON OOP
+
+DEFINING CLASSES - https://www.youtube.com/watch?v=sxRknIFpUIM
+EXERCISE: DEFINING CLASSES - https://www.youtube.com/watch?v=ZaXE8eXw5yY
+CLASSES AND INSTANCES - https://www.youtube.com/watch?v=JKwJufSeWpY
+EXERCISE: CLASSES AND INSTANCES - https://www.youtube.com/watch?v=InLLr_YDlM4
+ATTRIBUTES AND METHODS - https://www.youtube.com/watch?v=YHbiPEBkH2M
+EXERCISE: ATTRIBUTES AND METHODS - https://www.youtube.com/watch?v=PeGZLBS9GNw
+ENCAPSULATION - https://www.youtube.com/watch?v=3Qhe7OpR5-0
+EXERCISE: ENCAPSULATION - https://www.youtube.com/watch?v=LlkhyFlPSxI
+INHERITANCE - https://www.youtube.com/watch?v=TFEipVgunPo
+EXERCISE: INHERITANCE - https://www.youtube.com/watch?v=vX2EJQ6a6ig
+POLYMORPHISM AND MAGIC METHODS - https://www.youtube.com/watch?v=lh-X2XYIL4o
+EXERCISE: POLYMORPHISM AND MAGIC METHODS - https://www.youtube.com/watch?v=FOB6sBAnGyA
+SOLID - https://www.youtube.com/watch?v=PRvnGfwIO8M
+EXERCISE: SOLID - https://www.youtube.com/watch?v=GcLYgs7HCiA
+ITERATORS AND GENERATORS - https://www.youtube.com/watch?v=Xm3E37hY0JE
+EXERCISE: ITERATORS AND GENERATORS - https://www.youtube.com/watch?v=I9E2MN2OBdY
+DECORATORS - https://www.youtube.com/watch?v=_IBKvOBZpLw
+EXERCISE: DECORATORS - https://www.youtube.com/watch?v=5xVQBOcM5y0
+TESTING - https://www.youtube.com/watch?v=jxZwinEjLXU
+EXERCISE: TESTING - https://www.youtube.com/watch?v=MM5-iKj5exY
+DESIGN PATTERNS - https://www.youtube.com/watch?v=phaad4RtdFQ
+WORKSHOP - https://www.youtube.com/watch?v=DWEUaKVXKGw
+WORKSHOP 2 - https://www.youtube.com/watch?v=_5vDRnHPQzE
+EXAM PREPARATION - https://www.youtube.com/watch?v=HvmxsnZ1hPM
+EXAM PREPARATION 2 - https://www.youtube.com/watch?v=GBHDpKKjrbo
+
+
+
