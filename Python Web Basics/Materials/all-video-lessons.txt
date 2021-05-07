@@ -1,0 +1,15 @@
+PYTHON WEB BASICS
+
+INTRODUCTION TO DJANGO - https://www.youtube.com/watch?v=4LaqF7iVG88
+URL'S AND TEMPLATES - https://www.youtube.com/watch?v=l2PODIoLtyQ
+HTTP PROTOCOL - https://www.youtube.com/watch?v=LmxfDTD24lA
+WORKSHOP: PART 1 - https://www.youtube.com/watch?v=C-erie_8OV8
+DATABASE BASICS - https://www.youtube.com/watch?v=9cW_SdLFmrE
+MODELS AND MTV PATTERN - https://www.youtube.com/watch?v=52wWKjtUre0
+WORKSHOP: PART 2 - https://www.youtube.com/watch?v=7tXtQWe1F60
+FORMS - https://www.youtube.com/watch?v=d_TiAFh2xXE
+MODEL FORMS - https://www.youtube.com/watch?v=O7w9cBQEPDw
+UNIT AND INTEGRATION TESTING - https://www.youtube.com/watch?v=-LTsNke-2ow
+WORKSHOP: PART 3 - https://www.youtube.com/watch?v=8kJOAzjO6xY
+EXAM PREPARATION - https://www.youtube.com/watch?v=0NczEBFcwHY
+
