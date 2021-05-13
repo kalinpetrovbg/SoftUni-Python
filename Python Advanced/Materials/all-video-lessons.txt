@@ -1,0 +1,13 @@
+PYTHON ADVANCED
+
+LISTS AS STACKS AND QUEUES - https://www.youtube.com/watch?v=xaektJcZGb4
+EXERCISE: LISTS AS STACKS AND QUEUES - https://www.youtube.com/watch?v=rTcq5LGoHCc
+TUPLES AND SETS - https://www.youtube.com/watch?v=y9ReffxgwIk
+EXERCISE: TUPLES AND SETS - https://www.youtube.com/watch?v=y2veaVsi5pM
+MULTIDIMENSIONAL LISTS - https://www.youtube.com/watch?v=gpRq4rhn0zk
+EXERCISE: MULTIDIMENSIONAL LISTS - https://www.youtube.com/watch?v=fCwtNIqsDfQ
+COMPREHENSION - https://www.youtube.com/watch?v=NRo0VmvtVkY
+EXERCISE: COMPREHENSION - https://www.youtube.com/watch?v=eru8s1Fqg4U
+
+
+
