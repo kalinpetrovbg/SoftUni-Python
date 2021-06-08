@@ -1,16 +1,26 @@
 from urllib import parse
 
 def get_protocol(scheme):
-    pass
+    if scheme in ('http', 'https'):
+        return scheme
 
 def get_host(netloc):
-    pass
+    if '.' not in netloc:
+        return
+    elif ':' in netloc:
+        return netloc.split(':')[0]
+    return netloc
 
 def get_port(netloc, scheme):
-    pass
+    if ':' in netloc:
+        return netloc.split(':')[1]
+    if scheme == 'http':
+        return 80
+    elif scheme == 'https':
+        return 443
 
 def get_path(path):
-    pass
+    return path or '/'
 
 
 def validate(url):
@@ -24,6 +34,8 @@ def validate(url):
         'Query': data.query,
         'Fragment': data.fragment,
     }
+
+    return result
 
 
 print(validate('http://softuni.bg/'))
