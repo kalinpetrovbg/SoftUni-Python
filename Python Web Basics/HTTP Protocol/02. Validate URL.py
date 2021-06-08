@@ -35,9 +35,28 @@ def validate(url):
         'Fragment': data.fragment,
     }
 
-    return result
+    required_component_names = [
+        'Protocol',
+        'Host',
+        'Port',
+        'Path',
+    ]
+
+    optional_component_names = [
+        'Query',
+        'Fragment',
+    ]
+
+    are_required_components_present = all(result[name] for name in required_component_names)
+
+    if are_required_components_present:
+        for component_name in required_component_names + optional_component_names:
+            if result[component_name]:
+                print(f'{component_name}: {result[component_name]}')
+    else:
+        print('Invalid URL')
 
 
-print(validate('http://softuni.bg/'))
-print(validate('https://softuni.bg:447/search?Query=pesho&Users=true#go'))
-print(validate('http://google:443/'))
+validate('http://softuni.bg/')
+validate('https://softuni.bg:447/search?Query=pesho&Users=true#go')
+validate('http://google:443/')
