@@ -4,8 +4,8 @@ from todos_app.todos.models import Todo
 from todos_app.todos.models.todo import Person, Category
 
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ['text', 'owner']
-    sortable_by = ['text']
+    list_display = ['name_of_task', 'owner']
+    sortable_by = ['name_of_task']
     list_filter = ['owner']
 
 class ChangedCategory(admin.ModelAdmin):
