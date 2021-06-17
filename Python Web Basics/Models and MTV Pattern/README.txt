@@ -1,4 +1,5 @@
 Models
+
 1.	В файла models.py пишем
 class Todo(models.Model): 
 text = models.CharField(max_length=30)
