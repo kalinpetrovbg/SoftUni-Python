@@ -39,7 +39,8 @@ NAME_CHOICES = ((HOME_CHOICE, ‘Home stuff‘),(WORK_CHOICE, ‘Work stuff’))
 choices=NAME_CHOICES
 По този начин създаваме полетата първо за базата, а след това ги създаваме за потребителя. 
 
-MTV Pattern
+
+MTV Patterns
 
 1.	За да съзададем първото си view, пишем следното във файла todos > views.py
 def index(request):
@@ -57,6 +58,7 @@ return render(reques, ‘index.html’, context)
 5.	След това в views.py променяме [] на: Todo.objects.all()  Трябва да импортем и модела:
 from todos_app.todos.models import Todo
 По този начин можем да визуализираме данни от нашата база директно в html страницата.
+
 
 Create and Delete Forms
 
