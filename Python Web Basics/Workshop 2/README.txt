@@ -1,6 +1,6 @@
 WORKSHOP 2 - PETSTAGRAM v2
 
-1.	Създаваме нов app чрез create app pets и правим стандартните неща в началото.
+1.	Създаваме нов app чрез startapp pets и правим стандартните неща в началото.
 2.	В models.py добавяме класове за Pet и за Like
 class Pet(models.Model):
     TYPE_CHOICE_CAT = 'cat'
