@@ -26,3 +26,17 @@ def pet_like(request, pk):
     like = Like(pet=pet_to_like)
     like.save()
     return redirect('pet details', pet_to_like.id)
+
+def only_cats(request):
+    cats_only = Pet.objects.filter(type=Pet.TYPE_CHOICE_CAT)
+    context = {
+        'pets': cats_only,
+    }
+    return render(request, 'pet_list.html', context)
+
+def only_dogs(request):
+    dogs_only = Pet.objects.filter(type=Pet.TYPE_CHOICE_DOG)
+    context = {
+        'pets': dogs_only,
+    }
+    return render(request, 'pet_list.html', context)
