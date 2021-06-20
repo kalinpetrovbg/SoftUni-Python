@@ -11,7 +11,7 @@
     <ul>
         <img src="/static/images/chef.png" alt="chef">
         <li class="title"><a href="/">Recipes</a></li>
-        <li><a href="./create">Add Recipe</a></li>
+        <li><a href="{% url 'create' %}">Add Recipe</a></li>
     </ul>
 </nav>
     <div class="container">
@@ -26,9 +26,7 @@
             <label for="imageURL">Image URL</label>
             <input type="url" name="image_url" value="{{ recipe.image_url }}" maxlength="200"  required="" id="id_image_url">
             <label for="description">Description</label>
-            <textarea name="description" cols="40" rows="10"  required="" id="id_description">
-                {{ recipe.description }}
-            </textarea>
+            <textarea name="description" cols="40" rows="10"  required="" id="id_description">{{ recipe.description }}</textarea>
             <label for="ingredients">Ingredients</label>
             <input type="text" name="ingredients" value="{{ recipe.ingredients }}" maxlength="250"  required="" id="id_ingredients">
             <label for="time">Time (Minutes)</label>
