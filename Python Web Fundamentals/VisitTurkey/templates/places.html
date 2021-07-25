@@ -1,0 +1,27 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+    <h1 class="text-center">All Places</h1>
+
+    <div class="container">
+        <div class="row">
+        {% for place in places %}
+            <div class="col-sm">
+
+                {{ place.name }}, {{ place.type }}
+                <div><img src="/{{ place.image }}" alt=""/></div>
+
+
+                {% if place.image %}
+                    <img src="{{ place.image.url }}">
+                {% else %}
+
+                {% endif %}
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
