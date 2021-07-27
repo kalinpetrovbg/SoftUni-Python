@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'VisitTurkey.accounts',
+    'VisitTurkey.profiles',
     'VisitTurkey.website',
 ]
 
@@ -125,5 +126,4 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
-
-
+AUTH_USER_MODEL = 'accounts.CustomUser'
