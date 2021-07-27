@@ -2,11 +2,22 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from VisitTurkey.accounts.forms import SignInForm
+
 
 def log_in(request):
-    user = authenticate(username='kalin', password='kalin123')
-    login(request, user)
-    return redirect('home page')
+    if request.method == 'POST':
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home page')
+    else:
+        form = SignInForm()
+
+    context = {'form': form}
+
+    return render(request, 'accounts/login.html', context)
 
 
 def log_out(request):
@@ -19,7 +30,10 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home page')  # OR TO SIGN IN
+            user = form.save()
+            login(request, user)
+            return redirect('home page')
+            # return redirect('log in')
     else:
         form = UserCreationForm()
 
