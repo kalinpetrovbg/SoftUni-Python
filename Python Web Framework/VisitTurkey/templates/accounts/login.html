@@ -1,30 +1,13 @@
 {% extends 'shared/base.html' %}
 
-
 {% block content %}
 
     <div class="container" style="max-width: 30%;">
-    <form action="{% url 'log in' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-
-{#                <div class="form-group">#}
-{#                    <label for="exampleInputEmail1">Email address</label>#}
-{#                    <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"#}
-{#                           placeholder="Enter email">#}
-{#                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>#}
-{#                </div>#}
-{#                <div class="form-group">#}
-{#                    <label for="exampleInputPassword1">Password</label>#}
-{#                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">#}
-{#                </div>#}
-
-
-
-        <button>Submit</button>
-    </form>
-
+        <form action="{% url 'log in' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button>Submit</button>
+        </form>
     </div>
-
 
 {% endblock %}

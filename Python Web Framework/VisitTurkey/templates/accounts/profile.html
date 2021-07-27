@@ -1,51 +1,22 @@
 {% extends 'shared/base.html' %}
 {% load static %}
+{% load profile_status %}
 
 
 {% block content %}
-    <div class="text-center">
-        <h1>Hello, {{ request.user }}!</h1>
-        <h5>This is your profile</h5>
-        {% if profile.profile_image %}
-            <img class="rounded-circle mb-3" src="{{ profile.profile_image.url }}" alt="" width="140"
-                 height="140">
-        {% else %}
-            <img class="rounded-circle mb-3" src="{% static 'images/profile.webp' %}" alt="" width="140"
-                 height="140">
-        {% endif %}
-        <div class="w-50 m-auto">
-            <form action="{% url 'profile details' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form }}
-                <button class="btn btn-success">Update</button>
-            </form>
-        </div>
+
+{#    <h1>{{ request.user }}</h1>#}
+
+    <h4>Welcome!</h4>
+
+    <div>
+    {% profile_status %}
     </div>
-    <hr>
-    {% if pets %}
-        <h2 class='text-center'>These are you pet photos</h2>
-        <div class="row">
-            <div class="row">
-                {% for pet in pets %}
-                    <div class="col-lg-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ pet.image.url }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ pet.type }} {{ pet.name }}, Age: {{ pet.age }}</h5>
-                                <p class="card-text">{{ pet.description }}</p>
-                                <p class="card-text"><strong>Owner: {{ request.user }}</strong></p>
-                                <a href="{% url 'pet details' pet.id %}" class="btn btn-primary">See details</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% else %}
-        <div class="text-center">
-            <h2>You have no pets</h2>
-            <a href="{% url 'create pet' %}" class="btn btn-success">Add Pet Photo</a>
-        </div>
-    {% endif %}
+
+    <form action="{% url 'profile info' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button>Save</button>
+    </form>
 
 {% endblock %}

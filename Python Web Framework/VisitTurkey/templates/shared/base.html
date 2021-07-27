@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,62 +16,16 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:2%">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'home page' %}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'create place' %}">Create place</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'all places' %}">All places</a>
-            </li>
-        </ul>
-    </div>
+{% include 'shared/header.html' %}
 
 
-    <div>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{ request.user }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log out' %}">Log out</a>
-                    </li>
-
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log in' %}">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
-                    </li>
-                {% endif %}
-
-            </ul>
-        </div>
-
-</nav>
-
-
-
+{#{% include 'tags/profile_status.html' %}#}
 
 {% block content %}
 {% endblock %}
 
-<footer>
-    This is footer.
-</footer>
+{% include 'shared/footer.html' %}
+
 
 </body>
 </html>

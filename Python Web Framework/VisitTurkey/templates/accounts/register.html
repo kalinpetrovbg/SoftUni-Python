@@ -3,27 +3,11 @@
 {% block content %}
 
     <div class="container" style="max-width: 30%;">
-
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
-
-
-            <div>
-                Username: {{ form.username }}
-            </div>
-
-            <div>
-                Password: {{ form.password1 }}
-            </div>
-
-            <div>
-                Confirm password: {{ form.password2 }}
-            </div>
-
+            {{ form }}
             <button>Register</button>
         </form>
-
     </div>
-
 
 {% endblock %}
