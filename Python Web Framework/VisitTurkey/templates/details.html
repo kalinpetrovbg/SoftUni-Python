@@ -1,0 +1,41 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="d-flex">
+            <div class="d-inline p-2 w-50">
+                <img src="{{ place.image.url }}" class="w-50 rounded mx-auto d-block">
+            </div>
+            <div class="d-inline p-2 w-50">
+                <div class="d-flex justify-content-between">
+                    <h5><u>Type:</u> {{ place.type }}</h5>
+                    <h5><u>Name:</u> {{ place.name }}</h5>
+                    <h5><u>Age:</u> {{ place.location }}</h5>
+                    <h5><u>Uploaded by:</u> {{ place.user.email }}</h5>
+                </div>
+                <p class="mt-2">Description: {{ place.description }}</p>
+
+                <h3>Comments:</h3>
+                {% if comments %}
+                    {% for comment in comments %}
+                        <p class="mt-2">{{ comment.user }} / Comment: {{ comment.text }}</p>
+                    {% endfor %}
+
+                {% endif %}
+
+                <a href="{% url 'all places' %}" class="btn btn-primary">Back to places</a>
+            </div>
+
+
+        </div>
+        {% if is_owner %}
+            <div>
+                <button>Edit Place</button>
+                <button>Delete Place</button>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
