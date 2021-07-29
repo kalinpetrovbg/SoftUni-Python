@@ -6,7 +6,7 @@
     <div class="container">
         <div class="d-flex">
             <div class="d-inline p-2 w-50">
-                <img src="{{ place.image.url }}" class="w-50 rounded mx-auto d-block">
+                <img src="{{ place.image.url }}" class="">
             </div>
             <div class="d-inline p-2 w-50">
                 <div class="d-flex justify-content-between">
@@ -15,7 +15,7 @@
                     <h5><u>Age:</u> {{ place.location }}</h5>
                     <h5><u>Uploaded by:</u> {{ place.user.email }}</h5>
                 </div>
-                <p class="mt-2">Description: {{ place.description }}</p>
+                <p class="">Description: {{ place.description }}</p>
 
                 <h3>Comments:</h3>
                 {% if comments %}
