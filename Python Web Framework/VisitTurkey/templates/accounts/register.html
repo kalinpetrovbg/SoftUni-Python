@@ -2,11 +2,17 @@
 
 {% block content %}
 
-    <div class="container" style="max-width: 30%;">
+    <div class="container">
         <form action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button>Register</button>
+            <div class="form-group">
+                <h4>Create an account</h4>
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                       placeholder="Enter email">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
     </div>
 
