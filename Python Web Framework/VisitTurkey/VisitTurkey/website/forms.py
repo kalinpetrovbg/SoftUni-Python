@@ -8,6 +8,28 @@ class PlaceForm(forms.ModelForm):
         model = Place
         exclude = {'user'}
 
+    name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': "Name of the place",
+            }))
+
+    location = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': "Enter accurate location",
+            }))
+
+    description = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                'class': "form-control",
+                'placeholder': "Enter nice and clear description",
+                'rows': "3",
+            }))
+
 
 class CommentForm(forms.ModelForm):
     place_pk = forms.IntegerField(widget=forms.HiddenInput())

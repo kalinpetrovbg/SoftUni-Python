@@ -3,19 +3,53 @@ from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-
 UserModel = get_user_model()
+
 
 class SignUpForm(UserCreationForm):
     class Meta:
         model = UserModel
-        fields = ('email',)
+        fields = ('email', )
+
+    email = forms.CharField(
+        widget=forms.EmailInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': "Enter your email",
+            }))
+
+    password1 = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(
+            attrs={'autocomplete': 'new-password',
+                   'class': "form-control",
+                   'placeholder': "Create strong password",
+                   }))
+
+    password2 = forms.CharField(
+        label="Repeat Password",
+        widget=forms.PasswordInput(
+            attrs={'autocomplete': 'new-password',
+                   'class': "form-control",
+                   'placeholder': "Repeat your password",
+                   }))
 
 
 class SignInForm(forms.Form):
     user = None
-    email = forms.EmailField(max_length=40)
-    password = forms.CharField(max_length=15, widget=forms.PasswordInput())
+    email = forms.CharField(
+        widget=forms.EmailInput(
+            attrs={
+                'class': "form-control",
+                'placeholder': "Enter your email",
+            }))
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(
+            attrs={'autocomplete': 'new-password',
+                   'class': "form-control",
+                   'placeholder': "Enter your password",
+                   }))
 
     def clean_password(self):
         self.user = authenticate(
