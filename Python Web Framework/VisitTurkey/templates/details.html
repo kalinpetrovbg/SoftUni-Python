@@ -10,15 +10,23 @@
             </div>
             <div class="d-inline p-2 w-50">
                 <div class="d-flex justify-content-between">
-                    <h5><u>Type:</u> {{ place.type }}</h5>
-                    <h5><u>Name:</u> {{ place.name }}</h5>
-                    <h5><u>Age:</u> {{ place.location }}</h5>
-                    <h5><u>Uploaded by:</u> {{ place.user.email }}</h5>
+                    <div class="place-name">
+                        <h5>Name: {{ place.name }}</h5>
+                    </div>
+                    <div class="place-location">
+                        <h5>Location: {{ place.location }}</h5>
+                    </div>
+
+                    {% if is_owner %}
+                    <h5>Uploaded by: {{ place.user.email }}</h5>
+                    {% endif %}
+
                 </div>
                 <p class="">Description: {{ place.description }}</p>
 
-                <h3>Comments:</h3>
+
                 {% if comments %}
+                    <h3>Comments:</h3>
                     {% for comment in comments %}
                         <p class="mt-2">{{ comment.user }} / Comment: {{ comment.text }}</p>
                     {% endfor %}
@@ -26,16 +34,18 @@
                 {% endif %}
 
                 <a href="{% url 'all places' %}" class="btn btn-primary">Back to places</a>
+                {% if is_owner %}
+
+                <a href="#" class="btn btn-success">Edit place</a>
+                <a href="#" class="btn btn-danger">Delete place</a>
+
+                {% endif %}
+
             </div>
 
 
         </div>
-        {% if is_owner %}
-            <div>
-                <button>Edit Place</button>
-                <button>Delete Place</button>
-            </div>
-        {% endif %}
+
     </div>
 
 {% endblock %}

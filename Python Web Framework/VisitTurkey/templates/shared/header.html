@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom:2%">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,9 +8,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'home page' %}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'create place' %}">Create place</a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'all places' %}">All places</a>
             </li>
@@ -20,27 +16,31 @@
     </div>
 
     <div>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
 
-            {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile info' %}">{{ request.user }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'log out' %}">Log out</a>
-                </li>
+                {% if request.user.is_authenticated %}
 
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'log in' %}">Log in</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'create place' %}"> + Add new place</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile info' %}">{{ request.user }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log out' %}">Log out</a>
+                    </li>
 
-        </ul>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log in' %}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
     </div>
-</div>
 </nav>

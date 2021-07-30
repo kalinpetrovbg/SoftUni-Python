@@ -1,11 +1,15 @@
-{%  extends 'shared/base.html' %}
+{% extends 'shared/base.html' %}
 
 {% block content %}
-<h1>Create Place</h1>
-    <form method="post" action="{% url 'create place' %}" enctype="multipart/form-data">
-        {{ form }}
-        {% csrf_token %}
-        <button>Create</button>
-    </form>
+
+    <div class="container">
+        <form action="{% url 'create place' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group create">
+                <h4>Add place</h4>
+                {{ form }}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
 
 {% endblock %}

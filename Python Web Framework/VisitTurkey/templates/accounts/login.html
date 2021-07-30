@@ -2,12 +2,19 @@
 
 {% block content %}
 
-    <div class="container" style="max-width: 30%;">
+    <div class="container">
         <form action="{% url 'log in' %}" method="post">
             {% csrf_token %}
-            {{ form }}
-            <button>Submit</button>
+            <div class="form-group">
+                <h4>Log in</h4>
+                {{ form }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
+
+        <div class="form-group">
+            <p>If you don't have an account, create it <a href="{% url 'register' %}">from here.</a></p>
+        </div>
     </div>
 
 {% endblock %}
