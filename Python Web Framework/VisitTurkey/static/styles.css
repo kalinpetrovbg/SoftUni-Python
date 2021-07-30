@@ -1,3 +1,31 @@
 .col-sm img{
     max-width: 150px;
 }
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height:2%;
+    background: #bbccdd;
+    border-top: 2px solid #1b1b1b;
+    width: 100%;
+}
+
+footer p {
+    margin:0 auto;
+    padding: 10px;
+}
+
+.form-group{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.form-group label{
+    margin-top:15px;
+}
+
+.form-group button{
+    margin-top:15px;
+}
