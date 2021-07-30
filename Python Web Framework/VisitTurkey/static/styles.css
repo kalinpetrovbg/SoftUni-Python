@@ -4,7 +4,7 @@
 
 
 footer {
-    position: absolute;
+    display: none;
     bottom: 0;
     height:2%;
     background: #bbccdd;
@@ -23,9 +23,40 @@ footer p {
 }
 
 .form-group label{
-    margin-top:15px;
+    margin:20px 0 5px 10px;
+    font-weight: 600;
 }
 
 .form-group button{
     margin-top:15px;
+}
+
+.form-control input {
+    border:10px
+}
+
+.form-group p{
+    margin-top:30px;
+}
+
+.create button{
+    float:right;
+}
+
+.create input[type=file]{
+    margin: 7px;
+    font-size: 14px;
+}
+
+.card img{
+   height: 180px;
+}
+
+.d-flex .d-inline img{
+    max-width: 100%
+}
+
+.place-name, .place-location {
+    display: block;
+    width: 100%;
 }
