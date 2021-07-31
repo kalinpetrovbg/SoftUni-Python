@@ -2,11 +2,10 @@
 
 {% block content %}
 
-    <h1>Home page</h1>
-
+{# Image will go here #}
 
     <div class="container">
-        <h1 class='text-center'>All Places</h1>
+        <h1 class='text-center'>Newest Places</h1>
         <div class="row">
             {% for place in places %}
                 <div class="col-lg-4">
@@ -20,6 +19,24 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">prev</a>
+            {% else %}
+                <a href="/" style="pointer-events: none">Prev</a>
+            {% endif %}
+                <span class="current">
+                {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% else %}
+                    <a href="" style="pointer-events: none">next</a>
+                {% endif %}
+            </span>
         </div>
     </div>
 
