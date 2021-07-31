@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="container">
-        <form action="{% url 'create place' %}" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group create">
                 <h4>Edit place</h4>
