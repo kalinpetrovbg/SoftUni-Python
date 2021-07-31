@@ -6,12 +6,12 @@
 
 
     <div class="container">
-        <h1 class='text-center'>Best Places</h1>
+        <h1 class='text-center'>All Places</h1>
         <div class="row">
             {% for place in places %}
                 <div class="col-lg-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="{{ pet.image }}" class="card-img-top" alt="image of {{ place.name }}"/>
+                        <img src="{{ place.image.url }}" class="card-img-top" alt="image of {{ place.name }}"/>
                         <div class="card-body">
                             <h5 class="card-title">{{ place.type }}: {{ place.name }}, {{ place.location }}</h5>
                             <p class="card-text">{{ place.description }}</p>
