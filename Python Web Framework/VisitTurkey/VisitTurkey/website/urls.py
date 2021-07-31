@@ -1,10 +1,12 @@
 from django.urls import path, include
-from VisitTurkey.website.views import home_page, place_details, \
-    create_place, all_places
+from . import views
+from VisitTurkey.website.views import place_details, \
+    create_place, all_places, IndexPage
 
 urlpatterns = [
-    path('', home_page, name='home page'),
+    path('', views.IndexPage.as_view(), name='home page'),
     path('details/<int:pk>', place_details, name='place details'),
     path('create/', create_place, name='create place'),
     path('places/', all_places, name='all places'),
+    path('delete/<int:pk>', views.DeletePlace.as_view(), name='delete place'),
 ]

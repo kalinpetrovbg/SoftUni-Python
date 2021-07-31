@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
 from VisitTurkey.website.forms import PlaceForm, CommentForm
 from VisitTurkey.website.models import Place
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
 
 
-def home_page(request):
-    return render(request, 'index.html')
+class IndexPage (ListView):
+    template_name = 'index.html'
+    model = Place
+    context_object_name = 'places'
+    paginate_by = 6
 
 
 def place_details(request, pk):
@@ -28,12 +33,18 @@ def create_comment(request, pk):
     return redirect('place details', pk)
 
 
-def delete_place(request):
-    pass
+class UpdatePlace (UpdateView):  ### + AnyGroupRequiredMixin
+    template_name = 'edit.html'
+    model = Place
+    fields = '__all__'
+    context_object_name = "cake"
+    success_url = reverse_lazy('home page')
 
 
-def edit_place(request):
-    pass
+class DeletePlace (DeleteView):   ### + AnyGroupRequiredMixin
+    template_name = 'delete.html'
+    model = Place
+    success_url = reverse_lazy('home page')
 
 
 def all_places(request):
