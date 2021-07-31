@@ -33,7 +33,7 @@ def create_comment(request, pk):
     return redirect('place details', pk)
 
 
-class UpdatePlace (UpdateView):  ### + AnyGroupRequiredMixin
+class UpdatePlace(UpdateView):
     template_name = 'edit.html'
     model = Place
     fields = '__all__'
@@ -41,7 +41,7 @@ class UpdatePlace (UpdateView):  ### + AnyGroupRequiredMixin
     success_url = reverse_lazy('home page')
 
 
-class DeletePlace (DeleteView):   ### + AnyGroupRequiredMixin
+class DeletePlace(DeleteView):
     template_name = 'delete.html'
     model = Place
     success_url = reverse_lazy('home page')
