@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-
 CustomUserModel = get_user_model()
+
 
 class Profile(models.Model):
     first_name = models.CharField(max_length=20, blank=True)
