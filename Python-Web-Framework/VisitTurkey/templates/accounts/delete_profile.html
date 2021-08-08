@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="form-group">
+        <h4>Delete your profile</h4>
+        <p>Are you sure that you want to delete your profile?</p>
+            <form action="{% url 'delete profile' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-danger">Yes, delete it</button>
+                <a class="btn btn-primary stylized" href="{% url 'profile info' %}">Cancel</a>
+            </form>
+    </div>
+</div>
+
+{% endblock %}

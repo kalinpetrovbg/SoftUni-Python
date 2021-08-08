@@ -10,11 +10,14 @@
             <h4>Welcome!</h4>
             {% profile_status %}
 
-            <form action="{% url 'profile info' %}" method="post">
-                {% csrf_token %}
-                {{ form }}
-                <button type="submit" class="btn btn-success">Save</button>
-            </form>
+            {{ form }}
+
+            <div style="margin-top:20px;">
+                <a href="{% url 'edit profile' %}" class="btn btn-primary">Edit profile</a>
+                <a href="{% url 'delete profile' %}" class="btn btn-danger">Delete profile</a>
+            </div>
+
         </div>
+    </div>
 
 {% endblock %}
