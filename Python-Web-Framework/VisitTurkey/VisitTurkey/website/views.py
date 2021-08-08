@@ -47,14 +47,13 @@ class DeletePlace(DeleteView):
     success_url = reverse_lazy('home page')
 
 
-def all_places(request):
-    places = Place.objects.all()
-    context = {'places': places}
+class AllPlaces(ListView):
+    template_name = 'places.html'
+    model = Place
+    context_object_name = 'places'
+    paginate_by = 12
 
-    return render(request, 'places.html', context)
 
-
-# @login_required
 def create_place(request):
     if request.method == 'POST':
         form = PlaceForm(request.POST, request.FILES)
