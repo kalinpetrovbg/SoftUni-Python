@@ -26,14 +26,12 @@ def log_out(request):
 
 
 def register(request):
-    if request.POST:
+    if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
             user = form.save()
             login(request, user)
             return redirect('home page')
-            # return redirect('log in')
     else:
         form = SignUpForm()
 

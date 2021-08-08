@@ -1,7 +1,6 @@
-from django.urls import path, include
+from django.urls import path
 
 from VisitTurkey.accounts.views import log_in, log_out, register
-
 
 urlpatterns = [
     path('log-in/', log_in, name='log in'),
