@@ -7,10 +7,18 @@
 
     <div class="container">
         <div class="form-group">
-            <h4>Welcome!</h4>
-            {% profile_status %}
 
-            {{ form }}
+
+                {% if not profile.is_complete %}
+                   <h4>Welcome, {{ request.user.email }}!</h4>
+                    {% profile_status %}
+                {% else %}
+                    <h4>Your profile:</h4>
+                    <p>First Name: {{ profile.first_name }}</p>
+                    <p>Last Name: {{ profile.last_name }}</p>
+                    <p>Age: {{ profile.age }}</p>
+                    <p>City: {{ profile.city }}</p>
+                {% endif %}
 
             <div style="margin-top:20px;">
                 <a href="{% url 'edit profile' %}" class="btn btn-primary">Edit profile</a>
