@@ -3,7 +3,10 @@
 {% block content %}
 
     <div class="container">
-        <h1 class='text-center'>All Places</h1>
+        {% if places %}
+            <h1 class='text-center'>All Places</h1>
+        {% endif %}
+
         <div class="row">
             {% for place in places %}
                 <div class="col-lg-4">
@@ -19,7 +22,8 @@
             {% endfor %}
         </div>
 
-        <div class="pagination">
+        {% if places.count > 6 %}
+            <div class="pagination">
             <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page={{ page_obj.previous_page_number }}">prev</a>
@@ -35,7 +39,8 @@
                     <a href="" style="pointer-events: none">next</a>
                 {% endif %}
             </span>
-        </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
