@@ -6,12 +6,22 @@ from VisitTurkey.website.models import Place
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
 
 
-class IndexPage (ListView):
-    template_name = 'index.html'
-    model = Place
-    context_object_name = 'places'
-    paginate_by = 6
+# class IndexPage (ListView):
+#     template_name = 'index.html'
+#     model = Place
+#     context_object_name = 'places'
+#     paginate_by = 6
 
+
+def index(request):
+    all_places = Place.objects.all().order_by('id')[::-1]
+    count_places = len(all_places)
+    if count_places >= 3:
+        places = all_places[:3]
+    else:
+        places = Place.objects.all()
+    context = {'places': places}
+    return render(request, 'index.html', context)
 
 def place_details(request, pk):
     place = Place.objects.get(pk=pk)
@@ -20,17 +30,6 @@ def place_details(request, pk):
     context = {'place': place, 'is_owner': is_owner, 'comments': comments}
 
     return render(request, 'details.html', context)
-
-
-# @login_required
-def create_comment(request, pk):
-    form = CommentForm(request.POST)
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.user = request.user
-        comment.save()
-
-    return redirect('place details', pk)
 
 
 class UpdatePlace(UpdateView):

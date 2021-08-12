@@ -65,3 +65,22 @@ footer p {
 .stylized {
     margin-top:16px;
 }
+
+
+.card {
+    margin-bottom: 5%;
+}
+
+
+.navbar-expand-lg .navbar-collapse {
+    margin: 0 20px 0 20px;
+}
+
+
+.pagination {
+    margin:10px;
+}
+
+.text-center {
+    margin-bottom: 30px;
+}
