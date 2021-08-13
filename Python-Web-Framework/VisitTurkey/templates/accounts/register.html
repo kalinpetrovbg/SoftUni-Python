@@ -9,12 +9,9 @@
                 <h4>Create an account</h4>
                 {{ form }}
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <p>If you already have an account, log in <a href="{% url 'log in' %}">from here.</a></p>
             </div>
         </form>
-
-        <div class="form-group">
-            <p>If you already have an account, log in <a href="{% url 'log in' %}">from here.</a></p>
-        </div>
     </div>
 
 {% endblock %}

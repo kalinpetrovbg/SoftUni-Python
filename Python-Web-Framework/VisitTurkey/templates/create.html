@@ -6,9 +6,11 @@
         <form action="{% url 'create place' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group create">
-                <h4>Add place</h4>
+                <h4>Add new place</h4>
                 {{ form }}
+                {{ form.errors }}
                 <button type="submit" class="btn btn-success">Submit</button>
+                <a href="{% url 'all places' %}" class="btn btn-primary stylized">Cancel</a>
             </div>
         </form>
 

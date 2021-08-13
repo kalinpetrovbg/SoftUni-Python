@@ -9,20 +9,21 @@
                 <img src="{{ place.image.url }}" class="">
             </div>
             <div class="d-inline p-2 w-50">
-                <div class="d-flex justify-content-between">
+                <div class="place-info">
                     <div class="place-name">
-                        <h5>Name: {{ place.name }}</h5>
+                        <h2>{{ place.name }}</h2>
                     </div>
                     <div class="place-location">
                         <h5>Location: {{ place.location }}</h5>
                     </div>
 
                     {% if is_owner %}
-                    <h5>Uploaded by you</h5>
+                    <p>Uploaded by you</p>
                     {% endif %}
 
                 </div>
-                <p class="">Description: {{ place.description }}</p>
+                <h5>Description: </h5>
+                <p class="">{{ place.description }}</p>
 
                 <a href="{% url 'all places' %}" class="btn btn-primary">Back to places</a>
 
