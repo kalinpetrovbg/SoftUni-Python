@@ -1,16 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView
 
-from VisitTurkey.website.forms import PlaceForm, CommentForm
+from VisitTurkey.website.forms import PlaceForm
 from VisitTurkey.website.models import Place
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, FormView
-
-
-# class IndexPage (ListView):
-#     template_name = 'index.html'
-#     model = Place
-#     context_object_name = 'places'
-#     paginate_by = 6
 
 
 def index(request):
@@ -23,24 +17,23 @@ def index(request):
     context = {'places': places}
     return render(request, 'index.html', context)
 
+
 def place_details(request, pk):
     place = Place.objects.get(pk=pk)
     is_owner = place.user == request.user
-    comments = place.comment_set.all()
-    context = {'place': place, 'is_owner': is_owner, 'comments': comments}
+    context = {'place': place, 'is_owner': is_owner,}
 
     return render(request, 'details.html', context)
 
 
-class UpdatePlace(UpdateView):
+class UpdatePlace(LoginRequiredMixin, UpdateView):
     template_name = 'edit.html'
     model = Place
-    fields = '__all__'
-    context_object_name = "cake"
+    form_class = PlaceForm
     success_url = reverse_lazy('home page')
 
 
-class DeletePlace(DeleteView):
+class DeletePlace(LoginRequiredMixin, DeleteView):
     template_name = 'delete.html'
     model = Place
     success_url = reverse_lazy('home page')

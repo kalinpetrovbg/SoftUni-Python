@@ -10,9 +10,3 @@ class Place(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='media_files')
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
-
-
-class Comment(models.Model):
-    text = models.TextField()
-    place = models.ForeignKey(Place, on_delete=models.CASCADE)
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)

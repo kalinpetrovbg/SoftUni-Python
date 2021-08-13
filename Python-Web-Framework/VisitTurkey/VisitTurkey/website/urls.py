@@ -1,6 +1,7 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+
 from VisitTurkey.website.views import place_details, create_place, index
+from . import views
 
 urlpatterns = [
     path('', index, name='home page'),
