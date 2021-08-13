@@ -3,14 +3,17 @@
 {% block content %}
 
     <div class="container">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group create">
-                <h4>Edit place</h4>
+        <div class="form-group">
+            <h4>Edit place</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 {{ form }}
                 {{ form.errors }}
                 <button type="submit" class="btn btn-success">Update</button>
-            </div>
-        </form>
+                <a href="{% url 'all places' %}" class="btn btn-primary stylized">Cancel</a>
+            </form>
+        </div>
+    </div>
+
 
 {% endblock %}

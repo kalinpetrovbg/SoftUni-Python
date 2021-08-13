@@ -18,24 +18,15 @@
                     </div>
 
                     {% if is_owner %}
-                    <h5>Uploaded by: {{ place.user.email }}</h5>
+                    <h5>Uploaded by you</h5>
                     {% endif %}
 
                 </div>
                 <p class="">Description: {{ place.description }}</p>
 
-
-                {% if comments %}
-                    <h3>Comments:</h3>
-                    {% for comment in comments %}
-                        <p class="mt-2">{{ comment.user }} / Comment: {{ comment.text }}</p>
-                    {% endfor %}
-
-                {% endif %}
-
                 <a href="{% url 'all places' %}" class="btn btn-primary">Back to places</a>
-                {% if is_owner %}
 
+                {% if is_owner %}
                 <a href="{% url 'update place' place.id %}" class="btn btn-success">Edit place</a>
                 <a href="{% url 'delete place' place.id %}" class="btn btn-danger">Delete place</a>
 

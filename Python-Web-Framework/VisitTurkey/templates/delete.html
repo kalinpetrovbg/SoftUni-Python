@@ -2,11 +2,16 @@
 
 {% block content %}
 
-    <h1>Delete Place</h1>
-    <form method="post">
-        {% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
-        <input type="submit" value="Confirm">
-    </form>
+    <div class="container">
+        <div class="form-group">
+            <h4>Delete place</h4>
+            <form method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete <b>{{ object.name }}</b>?</p>
+                <button type="submit" class="btn btn-danger">Confirm</button>
+                <a href="{% url 'all places' %}" class="btn btn-primary stylized">Cancel</a>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}
