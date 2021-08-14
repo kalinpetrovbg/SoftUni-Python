@@ -22,7 +22,7 @@
             {% endfor %}
         </div>
 
-        {% if places.count > 6 %}
+        {% if places.count != 0 %}
             <div class="pagination">
             <span class="step-links">
             {% if page_obj.has_previous %}
