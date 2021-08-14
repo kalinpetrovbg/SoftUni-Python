@@ -2,12 +2,16 @@
 
 {% block content %}
 
-{# Image will go here #}
+
 
     <div class="container">
-    {% if places %}
-        <h1 class='text-center'>Newest Places</h1>
-    {% endif %}
+        <div class="main-banner">
+            <img src="static/banner.jpg">
+        </div>
+
+        {% if places %}
+            <h1 class='text-center'>Most recent places</h1>
+        {% endif %}
         <div class="row">
             {% for place in places %}
                 <div class="col-lg-4">
