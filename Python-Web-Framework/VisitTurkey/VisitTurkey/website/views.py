@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import ListView, UpdateView, DeleteView, DetailView, CreateView
 
 from VisitTurkey.website.forms import PlaceForm
 from VisitTurkey.website.models import Place
@@ -26,6 +26,19 @@ def place_details(request, pk):
     return render(request, 'details.html', context)
 
 
+class PlaceDetails(DetailView):
+    template_name = 'details.html'
+    model = Place
+
+    pass
+
+class CreatePlace(CreateView):
+    template_name = 'create.html'
+    model = Place
+    form_class = PlaceForm
+    success_url = reverse_lazy('all places')
+
+
 class UpdatePlace(LoginRequiredMixin, UpdateView):
     template_name = 'edit.html'
     model = Place
@@ -46,20 +59,3 @@ class AllPlaces(ListView):
     paginate_by = 6
 
 
-def create_place(request):
-    if request.method == 'POST':
-        form = PlaceForm(request.POST, request.FILES)
-        if form.is_valid():
-            place = form.save(commit=False)
-            place.user = request.user
-            place.save()
-
-            return redirect('all places')
-    else:
-        form = PlaceForm()
-
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'create.html', context)
