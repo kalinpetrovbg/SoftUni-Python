@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
 
 UserModel = get_user_model()
@@ -35,14 +35,16 @@ class SignUpForm(UserCreationForm):
                    }))
 
 
-class SignInForm(forms.Form):
+class SignInForm(AuthenticationForm):
     user = None
-    email = forms.CharField(
-        widget=forms.EmailInput(
-            attrs={
-                'class': "form-control",
-                'placeholder': "Enter your email",
-            }))
+
+    # email = forms.CharField(
+    #     widget=forms.EmailInput(
+    #         attrs={
+    #             'class': "form-control",
+    #             'placeholder': "Enter your email",
+    #         }))
+
     password = forms.CharField(
         label="Password",
         widget=forms.PasswordInput(
@@ -52,8 +54,9 @@ class SignInForm(forms.Form):
                    }))
 
     def clean_password(self):
+        super().clean()
         self.user = authenticate(
-            email=self.cleaned_data['email'],
+            email=self.cleaned_data['username'],
             password=self.cleaned_data['password'],
         )
 

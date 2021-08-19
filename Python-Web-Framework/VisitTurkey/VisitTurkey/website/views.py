@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView, DetailView, CreateView
 
@@ -18,19 +18,18 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def place_details(request, pk):
-    place = Place.objects.get(pk=pk)
-    is_owner = place.user == request.user
-    context = {'place': place, 'is_owner': is_owner,}
-
-    return render(request, 'details.html', context)
-
-
 class PlaceDetails(DetailView):
     template_name = 'details.html'
     model = Place
+    context_object_name = 'place'
 
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        place = context['place']
+        is_owner = place.user == self.request.user
+        context['is_owner'] = is_owner
+        return context
+
 
 class CreatePlace(CreateView):
     template_name = 'create.html'
@@ -57,5 +56,3 @@ class AllPlaces(ListView):
     model = Place
     context_object_name = 'places'
     paginate_by = 6
-
-

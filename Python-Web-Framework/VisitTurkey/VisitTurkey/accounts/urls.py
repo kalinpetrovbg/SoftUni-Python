@@ -1,9 +1,10 @@
 from django.urls import path
 
-from VisitTurkey.accounts.views import log_in, log_out, register
+from VisitTurkey.accounts.views import log_out
+from . import views
 
 urlpatterns = [
-    path('log-in/', log_in, name='log in'),
+    path('log-in/', views.LogInView.as_view(), name='log in'),
     path('log-out/', log_out, name='log out'),
-    path('register/', register, name='register'),
+    path('register/', views.RegisterView.as_view(), name='register'),
 ]
