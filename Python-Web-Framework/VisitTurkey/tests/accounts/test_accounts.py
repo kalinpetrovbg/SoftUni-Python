@@ -49,7 +49,7 @@ class RegisterUser(TestCase):
         self.assertFalse(user_form.is_valid(), msg='This password is entirely numeric.')
 
 
-class CreateUser(TestCase):
+class CreateUserPrivileges(TestCase):
     def test_valid_userdata_creates_normal_user(self):
         quote_user = UserModel.objects.create_user(email='kalin5@abv.bg', password='ZZgg105%1')
 

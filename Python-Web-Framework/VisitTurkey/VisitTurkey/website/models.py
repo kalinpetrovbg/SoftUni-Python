@@ -5,7 +5,7 @@ UserModel = get_user_model()
 
 
 class Place(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
     location = models.CharField(max_length=30)
     description = models.TextField()
     image = models.ImageField(upload_to='media_files')

@@ -43,7 +43,7 @@ class AllPlaces(ListView):
     template_name = 'places.html'
     model = Place
     context_object_name = 'places'
-    paginate_by = 12
+    paginate_by = 6
 
 
 def create_place(request):

@@ -1,5 +1,4 @@
-from django.contrib.auth import logout, authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout, login
 from django.shortcuts import render, redirect
 
 from VisitTurkey.accounts.forms import SignInForm, SignUpForm

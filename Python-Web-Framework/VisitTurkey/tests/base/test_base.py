@@ -5,8 +5,8 @@ UserModel = get_user_model()
 
 
 class PlacesTestCase(TestCase):
-    logged_in_user_email = 'kalin15@abv.bg'
-    logged_in_user_password = 'ZZgg105%1'
+    email = 'kalin15@abv.bg'
+    password = 'ZZgg105%1'
 
     def assertListEmpty(self, ll):
         return self.assertEqual([], ll, 'The list is not empty.')
@@ -14,8 +14,8 @@ class PlacesTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = UserModel.objects.create_user(
-            email=self.logged_in_user_email,
-            password=self.logged_in_user_password,
+            email=self.email,
+            password=self.password,
         )
         self.super_user = UserModel.objects.create_superuser(
             email='kalin16@abv.bg',
