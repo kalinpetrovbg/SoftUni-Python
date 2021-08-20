@@ -96,3 +96,11 @@ class SignInViewTest(MainTestCase):
         errors = response.context_data['form'].errors['password']
         default_error = 'Please enter a correct email and password. Note that both fields may be case-sensitive.'
         self.assertIn(default_error, errors)
+
+
+class RegisterViewTest(TestCase):
+    def test_register_should_render_correct_template_and_form(self):
+        response = self.client.get(reverse('register'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='accounts/register.html')
+        self.assertIsInstance(response.context_data['form'], SignUpForm)
