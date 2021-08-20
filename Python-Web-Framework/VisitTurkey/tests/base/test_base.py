@@ -21,3 +21,19 @@ class PlacesTestCase(TestCase):
             email='kalin16@abv.bg',
             password='ZZgg105%1',
         )
+
+
+class MainTestCase(TestCase):
+    EMAIL = 'kalin41494@gmail.com'
+    PASSWORD = 'fas7qwe12987'
+
+    def setUp(self):
+        self.user = UserModel.objects.create_user(
+            email=MainTestCase.EMAIL,
+            password=MainTestCase.PASSWORD,
+        )
+        self.user.is_active = True
+        self.user.save()
+
+    def tearDown(self):
+        self.user.delete()

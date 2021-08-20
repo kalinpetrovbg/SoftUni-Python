@@ -1,7 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.urls import reverse
 
 from VisitTurkey.accounts.forms import SignUpForm
+from tests.base.test_base import MainTestCase
 
 UserModel = get_user_model()
 
@@ -61,3 +63,15 @@ class CreateUserPrivileges(TestCase):
 
         self.assertEqual(True, quote_user.is_staff)
         self.assertEquals('kalin5@abv.bg', quote_user.email)
+
+
+class LogOutViewTest(MainTestCase):
+    def tearDown(self):
+        self.user.delete()
+
+    def test_send_to_index_after_successful_sign_out(self):
+        is_logged_in = self.client.login(username=self.EMAIL, password=self.PASSWORD)
+        self.assertTrue(is_logged_in)
+        response = self.client.get(reverse('log out'), follow=False)
+        self.assertEqual(302, response.status_code)
+        self.assertEqual(reverse('home page'), response.headers['location'])
