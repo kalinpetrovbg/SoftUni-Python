@@ -25,9 +25,6 @@ class RegisterView(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('home page')
 
-    """
-    Directly log in after a successful registration
-    """
     def form_valid(self, form):
         result = super().form_valid(form)
         login(self.request, self.object)

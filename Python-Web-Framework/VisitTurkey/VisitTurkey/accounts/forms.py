@@ -38,12 +38,13 @@ class SignUpForm(UserCreationForm):
 class SignInForm(AuthenticationForm):
     user = None
 
-    # email = forms.CharField(
-    #     widget=forms.EmailInput(
-    #         attrs={
-    #             'class': "form-control",
-    #             'placeholder': "Enter your email",
-    #         }))
+    username = forms.CharField(
+        widget=forms.EmailInput(
+            attrs={
+                'autofocus': True,
+                'class': "form-control",
+                'placeholder': "Enter your email",
+            }))
 
     password = forms.CharField(
         label="Password",
