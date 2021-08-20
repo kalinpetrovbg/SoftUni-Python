@@ -75,3 +75,24 @@ class LogOutViewTest(MainTestCase):
         response = self.client.get(reverse('log out'), follow=False)
         self.assertEqual(302, response.status_code)
         self.assertEqual(reverse('home page'), response.headers['location'])
+
+
+class SignInViewTest(MainTestCase):
+    def test_successful_log_in_should_redirect_to_home_page(self):
+        response = self.client.post(reverse('log in'), data={'username': 'kalin41494@gmail.com', 'password': 'fas7qwe12987'})
+        self.assertEqual(302, response.status_code)
+        self.assertEqual('/', response.headers['location'])
+
+    def test_wrong_username(self):
+        response = self.client.post(reverse('log in'), {'username': 'wrong', 'password': 'fas7qwe12987'})
+        self.assertEqual(200, response.status_code)
+        errors = response.context_data['form'].errors['password']
+        default_error = 'Please enter a correct email and password. Note that both fields may be case-sensitive.'
+        self.assertIn(default_error, errors)
+
+    def test_wrong_password(self):
+        response = self.client.post(reverse('log in'), {'username': 'kalin41494@gmail.com', 'password': 'wrong'})
+        self.assertEqual(200, response.status_code)
+        errors = response.context_data['form'].errors['password']
+        default_error = 'Please enter a correct email and password. Note that both fields may be case-sensitive.'
+        self.assertIn(default_error, errors)
