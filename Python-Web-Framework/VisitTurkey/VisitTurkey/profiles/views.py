@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.views.generic import FormView
+from django.urls import reverse_lazy
+from django.views.generic import DetailView, UpdateView
 
 from VisitTurkey.profiles.forms import ProfileForm
 from VisitTurkey.profiles.models import Profile
@@ -17,25 +17,21 @@ def profile_info(request):
     return render(request, 'accounts/profile.html', context)
 
 
-@login_required
-def edit_profile(request):
-    user_id = request.user.id
-    profile = Profile.objects.get(pk=user_id)
-    if request.method == 'GET':
-        form = ProfileForm(instance=profile)
-        context = {'form': form, 'profile': profile}
+# class ProfileDetailsView(DetailView):
+#     template_name = 'accounts/profile.html'
+#     model = Profile
+#     context_object_name = 'profile'
 
-        return render(request, 'accounts/edit_profile.html', context)
 
-    else:
-        form = ProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile info')
+class ProfileEditView(UpdateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'accounts/edit_profile.html'
+    success_url = reverse_lazy('profile info')
 
-        context = {'form': form, 'profile': profile}
-
-        return render(request, 'accounts/edit_profile.html', context)
+    # def get_success_url(self):
+    #     profile_id = self.kwargs['pk']
+    #     return reverse_lazy('profile info', kwargs={'pk': profile_id})
 
 
 @login_required

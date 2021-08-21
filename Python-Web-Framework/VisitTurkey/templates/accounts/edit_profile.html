@@ -12,7 +12,7 @@
     <div class="form-group">
         <h4>Edit your profile</h4>
 
-            <form action="{% url 'edit profile' %}" method="post">
+            <form action="{% url 'edit profile' user.id %}" method="post">
                 {% csrf_token %}
                 {{ form }}
                 {{ form.errors }}

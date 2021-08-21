@@ -104,3 +104,20 @@ class RegisterViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='accounts/register.html')
         self.assertIsInstance(response.context_data['form'], SignUpForm)
+
+
+class TestDeleteAccountView(MainTestCase):
+    def test_delete_account_view(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('delete profile'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_successful_delete_account(self):
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('home page'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_if_correct_template_when_delete_profile_is_used(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('delete profile'))
+        self.assertTemplateUsed(response, template_name='accounts/delete_profile.html')

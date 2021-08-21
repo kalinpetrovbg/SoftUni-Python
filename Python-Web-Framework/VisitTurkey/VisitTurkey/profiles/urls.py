@@ -1,10 +1,10 @@
 from django.urls import path
-from VisitTurkey.profiles.views import profile_info, edit_profile, delete_profile
+from VisitTurkey.profiles.views import delete_profile, profile_info
 from . import views
 
 urlpatterns = [
-    path('', profile_info, name='profile info'),
-    path('edit/', edit_profile, name='edit profile'),
+    path('info/', profile_info, name='profile info'),
+    path('edit/<int:pk>', views.ProfileEditView.as_view(), name='edit profile'),
     path('delete/', delete_profile, name='delete profile'),
 ]
 

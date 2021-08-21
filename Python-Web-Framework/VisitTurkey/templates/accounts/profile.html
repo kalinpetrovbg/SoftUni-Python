@@ -21,7 +21,7 @@
                 {% endif %}
 
             <div style="margin-top:20px;">
-                <a href="{% url 'edit profile' %}" class="btn btn-primary">Edit profile</a>
+                <a href="{% url 'edit profile' user.id %}" class="btn btn-primary">Edit profile</a>
                 <a href="{% url 'delete profile' %}" class="btn btn-danger">Delete profile</a>
             </div>
 

@@ -24,3 +24,4 @@ class ProfileDetailsTest(PlaceTestCase):
         self.client.force_login(self.user)
         response = self.client.get(reverse('profile info'))
         self.assertEqual(self.user.id, response.context['profile'].user_id)
+
