@@ -6,7 +6,7 @@ from VisitTurkey.website.models import Place
 class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
-        # exclude = {'user'}
+        exclude = {'user'}
         fields = '__all__'
 
     name = forms.CharField(

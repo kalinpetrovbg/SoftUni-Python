@@ -10,3 +10,4 @@ class Place(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='media_files')
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+

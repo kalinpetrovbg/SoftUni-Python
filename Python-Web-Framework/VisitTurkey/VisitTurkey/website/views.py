@@ -37,6 +37,9 @@ class CreatePlace(CreateView):
     form_class = PlaceForm
     success_url = reverse_lazy('all places')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class UpdatePlace(LoginRequiredMixin, UpdateView):
     template_name = 'edit.html'
