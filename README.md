@@ -1,1 +1,1 @@
-![Python Diploma](Dimploma-Python.jpeg)
+![Python Diploma](Dimploma-Python.jpg)
